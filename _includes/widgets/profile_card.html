@@ -1,3 +1,29 @@
+<!-- <style>
+  a.follow_href {
+  color: #6096B4;
+}
+
+a.location_href {
+  color: #6096B4;
+  text-decoration: none; 
+}
+
+.custom-radius {
+    border-radius: 15px;
+}
+
+.profile-portrait {
+    transition: opacity 0.2s ease-in-out;
+}
+
+.profile-portrait.hover {
+    opacity: 0;
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+</style> -->
+
 <div class="row">
     <div class="col">
         <div class="card border-0 shadow-sm bg-white">
@@ -6,11 +32,11 @@
                     <div class="col">
                         {% if site.data.profile.portrait_url %}
                         <!-- When the screen is wider than md, float the portrait on the right -->
-                        <div class="figure float-right ml-4 mb-4 d-none d-md-block">
+                        <div class="figure float-right ml-4 mb-4 d-none d-md-block" style="margin-top: 50px;">
                             <img 
                                 src="{{ site.data.profile.portrait_url | relative_url }}" 
                                 class="figure-img img-fluid img-thumbnail" 
-                                style="height: 200px;"
+                                style="height: 270px;"
                                 data-toggle="tooltip" 
                                 data-placement="top" 
                                 title="{{ site.data.profile.portrait_caption }}">
@@ -49,6 +75,10 @@
                 <hr />
                 <div class="row">
                     <div class="col">
+                        <a class="pr-3 no-break location_href">
+                            <i class="fa fa-fw fa-map-marker"></i> {{site.data.profile.location}} 
+                        </a>
+
                         <a class="pr-3 no-break" href="mailto:{{ site.data.profile.email | encode_email }}">
                             <i class="fas fa-at"></i> <span class="email-text">{{ site.data.profile.email | replace: "@", "(at)" }}</span>
                         </a>

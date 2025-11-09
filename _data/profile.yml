@@ -1,74 +1,71 @@
-primary_name: "Yinmin Zhong"
+primary_name: "Wenjun Yu"
 secondary_name: ""
-navbar_name: "Yinmin Zhong"
+navbar_name: "Wenjun Yu"
 
 positions:
-- logo: /assets/images/badges/PKU_red.png
-  name: PhD student @ Peking University
+- logo: /assets/images/badges/hkbu1.png
+  name: PhD student @ HKBU University
 
-email: "zhongyinmin@pku.edu.cn"
-cv_link: /assets/cv/resume.pdf
-gscholar: UUM_zLwAAAAJ  # Google Scholar ID
-github: PKUFlyingPig
-twitter: YinminZhong  # Do not include the '@' symbol
+location: Kowloon Tong, Hong Kong, China
+email: "cswjyu@comp.hkbu.edu.hk"
+# cv_link: /assets/cv/resume.pdf
+# gscholar: UUM_zLwAAAAJ  # Google Scholar ID
+# github: PKUFlyingPig
+# twitter: YinminZhong  # Do not include the '@' symbol
 # wechat_qrcode: /assets/images/etc/wechat.jpg
 # wechat_prompt: >-
 #   Please tell me your <strong>name</strong> and <strong>affiliation</strong> (current or past) when adding my wechat. Thanks!
 # linkedin: your-linked-in-id
-orcid: 0000-0002-2504-7652
+# orcid: 0000-0002-2504-7652
 
 short_bio_text_justify: false
 short_bio: >-
   <p>
-    I am a third-year Ph.D. student in Computer Science at Peking University, where I conduct research in the <a href=https://github.com/pkusys target="_blank" rel="noopener noreferrer"> 
-    Computer Systems Research Group </a> under the supervision of <a href=https://xinjin.github.io target="_blank" rel="noopener noreferrer"> Xin Jin</a>. 
-    Prior to that, I received my B.S. in Computer Science, also from Peking University.
-  </p>
+  I am Wenjun Yu (俞文军), a first-year Ph.D. student in Computer Science at Hong Kong Baptist University, 
+  supervised by Prof. <a href="https://amelieczhou.github.io/" class="profile_href">Amelie Chi Zhou</a>. 
+  Prior to that, I received my B.S. in Artificial Intelligence from Dalian University of Technology.</p>
   <p>
-    My research interests lie broadly in designing efficient systems for training and serving deep learning models, with a current focus on large language models (LLMs).
-  </p>
+  My research interests lie broadly in DLRM training/serving optimization, generative RecSys acceleration and GPU Virtualization techniques.</p>
   <p>
-    Outside of my academic work, I'm a passionate self-learner with a strong curiosity for various areas across computer science. I created a website called 
-    <a href=https://csdiy.wiki target="_blank" rel="noopener noreferrer"> csdiy </a> to share my self-learning experiences and curated resources with the broader community.
+  Outside of my academic work, I'm deeply curious about traditional Chinese metaphysics. 
+  I've explored systems such as Bazi, Ziwei Doushu, and Xiao Liu Ren, and enjoy studying
+  how these classical frameworks interpret patterns, fate, and decision-making.
   </p>
 
-portrait_url: /assets/images/photos/avatar.jpg
+portrait_url: /assets/images/photos/profile-wenjun.jpg
 portrait_caption: >-
-  Photo by Zaizuo Gong at The Grand Canyon
+  Taken in JiuZhai Valley, Nov. 2025.
 
 education:
-- name: Peking University
-  logo: /assets/images/badges/PKU_red.png
+- name: Hong Kong Baptist University
+  logo: /assets/images/badges/hkbu1.png
+  logo2: /assets/images/badges/comp.png
   position: >- 
-    School of Computer Science <br/>
     Ph.D. Student
-  date: Sep. 2022 - present
-- name: Peking University
-  logo: /assets/images/badges/PKU_red.png
-  position: B.S. in Computer Science
-  date: Sep. 2018 - Jul. 2022
+  date: Sep. 2025 - present
+- name: Dalian University of Technology
+  logo: /assets/images/badges/dut.png
+  logo2: /assets/images/badges/future.png
+  position: B.S. in Artificial Intelligence
+  date: Sep. 2019 - July. 2023
 
 experience:
-- name: StepFun System Team
-  logo: /assets/images/badges/stepfun.png
-  position: Research Intern
-  date: June 2024 - Apr. 2025
-- name: ByteDance Seed
-  logo: /assets/images/badges/bytedance.png
-  position: Research Intern
-  date: Aug. 2023 - May 2024
-- name: Sky Lab, UC Berkeley
-  logo: /assets/images/badges/berkeley.webp
-  position: Research Intern (remote)
-  date: May 2022 - Feb. 2023
-- name: Alibaba DAMO Academy
-  logo: /assets/images/badges/alibaba.png
-  position: Research Intern
-  date: Sep. 2021 - Apr. 2022
-- name: AI Innovation Center, Peking University
-  logo: /assets/images/badges/PKU_red.png
-  position: Software Engineer Intern
-  date: Sep. 2020 - Mar. 2021
+- name: Hong Kong Baptist University
+  logo: /assets/images/badges/hkbu1.png 
+  position:  >- 
+    Research Assistant
+  date: Feb. 2025 - Aug. 2025
+- name: VirtAi Tech
+  logo: /assets/images/badges/virtaitech.png 
+  position:  >- 
+    GPU Virtualization System Engineer
+  date: Aug. 2023 - Feb. 2025
+- name: ZhuoShi Private Equity Fund
+  logo: /assets/images/badges/zhuoshi.png
+  # logo2: /assets/images/badges/logo-vlg-text.png
+  position:  >- 
+    Quantitative Trading System Developer Outstanding Intern
+  date: Apr. 2022 - Sep. 2022
 
 
 # awards:
