@@ -1,0 +1,94 @@
+---
+layout: default
+title: Awards
+navbar_title: Awards
+---
+
+<style>
+  #awards-page .award-card {
+    border-left: 4px solid #87ceeb;
+    padding-left: 1.5rem;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+  }
+
+  #awards-page .award-card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 0.75rem 1.5rem rgba(31, 41, 51, 0.08);
+  }
+
+  #awards-page .award-meta {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+  }
+
+  #awards-page .award-badge {
+    background: #87ceeb;
+    color: #1f2933;
+    padding: 0.35rem 0.9rem;
+    border-radius: 999px;
+    font-size: 0.75rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    font-weight: 600;
+  }
+
+  #awards-page .award-list {
+    list-style: none;
+    padding-left: 0;
+    margin-bottom: 0;
+  }
+
+  #awards-page .award-list li {
+    position: relative;
+    padding-left: 1.5rem;
+    margin-bottom: 0.75rem;
+  }
+
+  #awards-page .award-list li::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 0.55rem;
+    width: 0.5rem;
+    height: 0.5rem;
+    border-radius: 50%;
+    background: #87ceeb;
+  }
+
+  #awards-page .award-list li:last-child {
+    margin-bottom: 0;
+  }
+</style>
+
+<div id="awards-page">
+<div class="row justify-content-center">
+  <div class="col-12 col-lg-10 col-xl-8">
+    <h1 class="pt-4">Awards</h1>
+    <p class="lead">Recognitions earned across academic stages.</p>
+
+    <div class="award-card bg-white shadow-sm rounded-sm p-4 mb-4">
+      <div class="award-meta mb-3">
+        <h3 class="h5 mb-0">Hong Kong Baptist University</h3>
+        <span class="award-badge">2025-present</span>
+      </div>
+      <p class="text-muted mb-0">Add awards or honors from this period as they are received.</p>
+    </div>
+
+    <div class="award-card bg-white shadow-sm rounded-sm p-4">
+      <div class="award-meta mb-3">
+        <h3 class="h5 mb-0">Dalian University of Technology</h3>
+        <span class="award-badge">2019-2023</span>
+      </div>
+      <ul class="award-list">
+        <li>Merit Student</li>
+        <li>National Scholarship</li>
+        <li>First Class Scholarship (Top 5%)</li>
+        <!-- <li>Mathematics Competition of Chinese — National First Prize</li> -->
+      </ul>
+    </div>
+  </div>
+</div>
+</div>
