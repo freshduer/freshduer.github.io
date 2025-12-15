@@ -18,7 +18,7 @@ authors:
   - Cheng Chen
 
 links:
-  # Paper: https://ieeexplore.ieee.org/document/11072208
+  Paper: https://arxiv.org/pdf/2512.12295
   # Project: https://onethousandwu.com/3DPortraitGAN.github.io/
   # Code: https://github.com/oneThousand1000/3DPortraitGAN
   # Supplementary: https://drive.google.com/file/d/16aNE5USZ0U32bgGJS1G5xWrY0oIMTfre/view?usp=sharing
