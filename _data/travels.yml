@@ -3,76 +3,96 @@ albums:
   - title: "Sydney"
     date: "2026.2"
     description: 
-    images:
+    images: 
+      - src: /assets/images/travels/sydney/1.jpg
+      - src: /assets/images/travels/sydney/2.jpg
       - src: /assets/images/photos/profile-wenjun2.jpg
-      - src: /assets/images/travels/sydney/sydney1.jpg
 
 
   - title: "JiuZhai Valley"
     date: "2025.11"
     description: 九寨沟秋色
     images:
-      - src: /assets/images/travels/jiuzhai/jiuzhai1.jpg
-      - src: /assets/images/travels/jiuzhai/jiuzhai2.jpg
+      - src: /assets/images/travels/jiuzhai/1.jpg
+      - src: /assets/images/travels/jiuzhai/3.jpg
 
   - title: "Zhuhai"
     date: "2025.6"
     description: ""
     images:
-      - src: /assets/images/travels/zhuhai/zhuhai1.jpg
+      - src: /assets/images/travels/zhuhai/1.jpg
+      - src: /assets/images/travels/zhuhai/2.jpg
+      - src: /assets/images/travels/zhuhai/3.jpg
 
   - title: "Macau"
     date: "2025.5"
     description: ""
     images:
-      - src: /assets/images/travels/macau/macau1.jpg
+      - src: /assets/images/travels/Macau/1.jpg
 
   - title: "Huang Mountain"
     date: "2025.4"
     description: ""
     images:
-      - src: /assets/images/travels/huangshan/huangshan1.jpg
-
+      - src: /assets/images/travels/huangshan/1.jpg
+      - src: /assets/images/travels/huangshan/2.jpg
+      - src: /assets/images/travels/huangshan/3.jpg
+      - src: /assets/images/travels/huangshan/4.jpg
+      - src: /assets/images/travels/huangshan/5.jpg
 
 
   - title: "Hong Kong"
     date: "2025.2"
     description: ""
     images:
-      - src: /assets/images/travels/hongkong/hongkong1.jpg
+      - src: /assets/images/travels/hongkong/1.jpg
+      - src: /assets/images/travels/hongkong/2.jpg
+      # - src: /assets/images/travels/hongkong/3.jpg
+      - src: /assets/images/travels/hongkong/4.jpg
 
   - title: "Beijing"
     date: "2025.1"
     description: ""
     images:
-      - src: /assets/images/travels/beijing/beijing1.jpg
+      - src: /assets/images/travels/beijing/1.jpg
+      - src: /assets/images/travels/beijing/2.jpg
+      - src: /assets/images/travels/beijing/3.jpg
+      - src: /assets/images/travels/beijing/4.jpg
+      - src: /assets/images/travels/beijing/5.jpg
 
   - title: "Chongqing"
     date: "2024.11"
     description: ""
     images:
-      - src: /assets/images/travels/chongqing/chongqing1.jpg
+      - src: /assets/images/travels/chongqing/1.jpg
+      - src: /assets/images/travels/chongqing/2.jpg
+      - src: /assets/images/travels/chongqing/3.jpg
+      - src: /assets/images/travels/chongqing/4.jpg
+      - src: /assets/images/travels/chongqing/5.jpg
 
   - title: "Chengdu"
-    date: "2025.10"
+    date: "2024.10"
     description: ""
     images:
-      - src: /assets/images/travels/chengdu/chengdu1.jpg
+      - src: /assets/images/travels/chengdu/1.jpg
+      - src: /assets/images/travels/chengdu/2.jpg
 
   - title: "Dalian"
     date: "2024.10"
     description: ""
     images:
-      - src: /assets/images/travels/dalian/dalian1.jpg
+      - src: /assets/images/travels/dalian/1.jpg
+      - src: /assets/images/travels/dalian/2.jpg
 
-  - title: "Tianjin"
-    date: "2023.10"
-    description: ""
-    images:
-      - src: /assets/images/travels/tianjin/tianjin1.jpg
+  # - title: "Tianjin"
+  #   date: "2023.10"
+  #   description: ""
+  #   images:
+  #     - src: /assets/images/travels/tianjin/tianjin1.jpg
 
   - title: "Nanjing"
     date: "2023.7"
     description: ""
     images:
-      - src: /assets/images/travels/nanjing/nanjing1.jpg
+      - src: /assets/images/travels/nanjing/1.jpg
+      - src: /assets/images/travels/nanjing/2.jpg

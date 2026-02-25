@@ -27,6 +27,21 @@ navbar_title: Travel Album
     object-fit: contain;
     object-position: center;
   }
+  /* 左右滑动：透明背景，箭头带轻微描边，在亮/暗图上都看得见 */
+  #travels-page .travel-album-carousel .carousel-control-prev,
+  #travels-page .travel-album-carousel .carousel-control-next {
+    width: 3rem;
+    opacity: 1;
+    background: transparent;
+  }
+  #travels-page .travel-album-carousel .carousel-control-prev { left: 0; }
+  #travels-page .travel-album-carousel .carousel-control-next { right: 0; }
+  #travels-page .travel-album-carousel .carousel-control-prev-icon,
+  #travels-page .travel-album-carousel .carousel-control-next-icon {
+    width: 1.5rem;
+    height: 1.5rem;
+    filter: brightness(0) drop-shadow(0 0 1px #fff);
+  }
 </style>
 
 <div id="travels-page">
