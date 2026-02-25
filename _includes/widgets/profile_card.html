@@ -30,16 +30,37 @@ a.location_href {
             <div class="card-body p-5">
                 <div class="row">
                     <div class="col">
-                        {% if site.data.profile.portrait_url %}
-                        <!-- When the screen is wider than md, float the portrait on the right -->
+                        {% assign has_portraits = site.data.profile.portraits | size %}
+                        {% if has_portraits > 0 %}
+                        <!-- 多张头像轮播：固定框尺寸，切换时框不动 -->
                         <div class="figure float-right ml-4 mb-4 d-none d-md-block" style="margin-top: 50px;">
-                            <img 
-                                src="{{ site.data.profile.portrait_url | relative_url }}" 
-                                class="figure-img img-fluid img-thumbnail" 
-                                style="height: 270px;"
-                                data-toggle="tooltip" 
-                                data-placement="top" 
-                                title="{{ site.data.profile.portrait_caption }}">
+                            <div id="profile-portrait-carousel" class="carousel slide" data-ride="carousel" data-interval="false" style="width: 220px; height: 270px;">
+                                <div class="carousel-inner" style="width: 220px; height: 270px; overflow: hidden; border-radius: 0.25rem;">
+                                    {% for p in site.data.profile.portraits %}
+                                    <div class="carousel-item {% if forloop.first %}active{% endif %}" style="width: 220px; height: 270px;">
+                                        <img src="{{ p.url | relative_url }}"
+                                            class="figure-img img-thumbnail d-block"
+                                            style="width: 100%; height: 270px; object-fit: cover; object-position: center;"
+                                            alt="Portrait"
+                                            data-toggle="tooltip" data-placement="top" title="{{ p.caption }}">
+                                    </div>
+                                    {% endfor %}
+                                </div>
+                                <a class="carousel-control-prev" href="#profile-portrait-carousel" role="button" data-slide="prev" style="width: 2rem;">
+                                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                                    <span class="sr-only">Previous</span>
+                                </a>
+                                <a class="carousel-control-next" href="#profile-portrait-carousel" role="button" data-slide="next" style="width: 2rem;">
+                                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                                    <span class="sr-only">Next</span>
+                                </a>
+                            </div>
+                        </div>
+                        {% elsif site.data.profile.portrait_url %}
+                        <div class="figure float-right ml-4 mb-4 d-none d-md-block" style="margin-top: 50px;">
+                            <img src="{{ site.data.profile.portrait_url | relative_url }}"
+                                class="figure-img img-fluid img-thumbnail" style="height: 270px;"
+                                data-toggle="tooltip" data-placement="top" title="{{ site.data.profile.portrait_caption }}">
                         </div>
                         {% endif %}
 
@@ -47,10 +68,11 @@ a.location_href {
                             <div class="h1 font-weight-normal">
                                 {{ site.data.profile.primary_name }} <small>{{ site.data.profile.secondary_name }}</small>
                             </div>
-                            {% if site.data.profile.portrait_url %}
+                            {% assign first_portrait_url = site.data.profile.portraits[0].url | default: site.data.profile.portrait_url %}
+                            {% if first_portrait_url %}
                             <div class="ml-auto d-md-none">
-                                <a target="_blank" href="{{ site.data.profile.portrait_url | relative_url }}">
-                                    <img src="{{ site.data.profile.portrait_url | relative_url }}" class="rounded-circle" style="height: 48px;" alt="Portrait">
+                                <a target="_blank" href="{{ first_portrait_url | relative_url }}">
+                                    <img src="{{ first_portrait_url | relative_url }}" class="rounded-circle" style="height: 48px;" alt="Portrait">
                                 </a>
                             </div>
                             {% endif %}

@@ -1,3 +1,4 @@
+# bundle exec jekyll serve
 primary_name: "Wenjun Yu"
 secondary_name: ""
 navbar_name: "Wenjun Yu"
@@ -33,9 +34,14 @@ short_bio: >-
   Explore my life Bazi score K-line chart <a href="https://lifekline-ruby.vercel.app/" target="_blank" rel="noopener noreferrer">here</a>.
   </p>
 
-portrait_url: /assets/images/photos/profile-wenjun.jpg
-portrait_caption: >-
-  Taken in JiuZhai Valley, Nov. 2025.
+# 多张头像时可左右滑动切换；仅一张时也兼容
+portraits:
+  - url: /assets/images/photos/profile-wenjun.jpg
+    caption: Taken in JiuZhai Valley, Nov. 2025.
+  - url: /assets/images/photos/profile-wenjun2.jpg
+    caption: Taken in Sydney, Feb. 2026.
+  - url: /assets/images/photos/wenjun3.jpg
+    caption: Taken in Sydney, Feb. 2026.
 
 education:
 - name: Hong Kong Baptist University
