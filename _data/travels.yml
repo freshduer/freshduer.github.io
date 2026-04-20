@@ -1,16 +1,35 @@
 # 旅游相册：每个相册一行，可放文字记录，图片可左右切换
 albums:
+  - title: "GuangZhou"
+    date: "2026.4"
+    lat: 23.1291
+    lng: 113.2644
+    description: 
+    images: 
+      - src: /assets/images/travels/guagzhou/1.jpg
+
+
   - title: "Sydney"
     date: "2026.2"
+    lat: -33.8688
+    lng: 151.2093
     description: 
     images: 
       - src: /assets/images/travels/sydney/1.jpg
       - src: /assets/images/travels/sydney/2.jpg
       - src: /assets/images/photos/profile-wenjun2.jpg
 
+  - title: "Yueyang"
+    date: "2026.1"
+    lat: 29.3703
+    lng: 113.1261
+    description: 
+    images: []
 
   - title: "JiuZhai Valley"
     date: "2025.11"
+    lat: 33.2520
+    lng: 103.9185
     description: 九寨沟秋色
     images:
       - src: /assets/images/travels/jiuzhai/1.jpg
@@ -18,6 +37,8 @@ albums:
 
   - title: "Zhuhai"
     date: "2025.6"
+    lat: 22.2710
+    lng: 113.5767
     description: ""
     images:
       - src: /assets/images/travels/zhuhai/1.jpg
@@ -26,12 +47,16 @@ albums:
 
   - title: "Macau"
     date: "2025.5"
+    lat: 22.1987
+    lng: 113.5439
     description: ""
     images:
       - src: /assets/images/travels/Macau/1.jpg
 
   - title: "Huang Mountain"
     date: "2025.4"
+    lat: 30.1330
+    lng: 118.1669
     description: ""
     images:
       - src: /assets/images/travels/huangshan/1.jpg
@@ -40,9 +65,19 @@ albums:
       - src: /assets/images/travels/huangshan/4.jpg
       - src: /assets/images/travels/huangshan/5.jpg
 
+  - title: "ShenZhen"
+    date: "2025.3"
+    lat: 22.5831
+    lng: 114.0009
+    description: 
+    images: 
+      - src: /assets/images/travels/shenzhen/1.jpg
+
 
   - title: "Hong Kong"
     date: "2025.2"
+    lat: 22.3193
+    lng: 114.1694
     description: ""
     images:
       - src: /assets/images/travels/hongkong/1.jpg
@@ -52,6 +87,8 @@ albums:
 
   - title: "Beijing"
     date: "2025.1"
+    lat: 39.9042
+    lng: 116.4074
     description: ""
     images:
       - src: /assets/images/travels/beijing/1.jpg
@@ -62,6 +99,8 @@ albums:
 
   - title: "Chongqing"
     date: "2024.11"
+    lat: 29.5630
+    lng: 106.5516
     description: ""
     images:
       - src: /assets/images/travels/chongqing/1.jpg
@@ -72,6 +111,8 @@ albums:
 
   - title: "Chengdu"
     date: "2024.10"
+    lat: 30.5728
+    lng: 104.0668
     description: ""
     images:
       - src: /assets/images/travels/chengdu/1.jpg
@@ -79,20 +120,39 @@ albums:
 
   - title: "Dalian"
     date: "2024.10"
+    lat: 38.9140
+    lng: 121.6147
     description: ""
     images:
       - src: /assets/images/travels/dalian/1.jpg
       - src: /assets/images/travels/dalian/2.jpg
 
-  # - title: "Tianjin"
-  #   date: "2023.10"
-  #   description: ""
-  #   images:
-  #     - src: /assets/images/travels/tianjin/tianjin1.jpg
+  - title: "Tianjin"
+    date: "2023.10"
+    lat: 39.1382
+    lng: 117.1937
+    description: ""
+    images: []
 
   - title: "Nanjing"
     date: "2023.7"
+    lat: 32.0603
+    lng: 118.7969
     description: ""
     images:
       - src: /assets/images/travels/nanjing/1.jpg
       - src: /assets/images/travels/nanjing/2.jpg
+
+  - title: "Haerbin"
+    date: "2016.7"
+    lat: 45.8038
+    lng: 126.5348
+    description: ""
+    images: []
+
+  - title: "Tangshan"
+    date: "2014.10"
+    lat: 39.6306
+    lng: 118.1754
+    description: ""
+    images: []
