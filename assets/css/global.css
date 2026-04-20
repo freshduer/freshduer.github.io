@@ -5,6 +5,41 @@ body {
     padding-top: 5.0rem;
 }
 
+:root {
+    --page-bg: #f8f9fa;
+    --surface-bg: #ffffff;
+    --text-color: #212529;
+    --muted-text-color: #6c757d;
+    --border-color: rgba(0, 0, 0, 0.08);
+    --link-color: #0056b3;
+    --link-hover-color: #003d80;
+    --code-bg: rgba(0, 0, 0, 0.06);
+}
+
+html[data-theme="dark"] {
+    --page-bg: #0f1116;
+    --surface-bg: #171b22;
+    --text-color: #e8ecf1;
+    --muted-text-color: #aeb7c2;
+    --border-color: rgba(255, 255, 255, 0.12);
+    --link-color: #8ec5ff;
+    --link-hover-color: #b9dbff;
+    --code-bg: rgba(255, 255, 255, 0.09);
+}
+
+body {
+    background-color: var(--page-bg) !important;
+    color: var(--text-color);
+}
+
+a {
+    color: var(--link-color);
+}
+
+a:hover {
+    color: var(--link-hover-color);
+}
+
 h1, h2, h3, h4, h5, h6,
 .h1, .h2, .h3, .h4, .h5, .h6 {
     font-weight: 700;
@@ -21,6 +56,29 @@ h1, h2, h3, h4, h5, h6,
 
 .navbar {
     opacity: 0.95;
+    background-color: var(--surface-bg) !important;
+    border-bottom: 1px solid var(--border-color);
+}
+
+.navbar .navbar-brand,
+.navbar .nav-link,
+.navbar .navbar-toggler {
+    color: var(--text-color) !important;
+}
+
+.navbar .navbar-toggler {
+    border-color: var(--border-color);
+}
+
+.theme-toggle-btn {
+    border: 1px solid var(--border-color);
+    color: var(--text-color) !important;
+    background: transparent;
+}
+
+.theme-toggle-btn:hover,
+.theme-toggle-btn:focus {
+    background: var(--code-bg);
 }
 
 .inline-badge {
@@ -69,5 +127,37 @@ div.lazy {
 
 .busuanzi {
     opacity: 0.85;
+}
+
+.bg-light,
+.bg-white {
+    background-color: var(--surface-bg) !important;
+}
+
+.card,
+.rounded-sm,
+.shadow-sm,
+.alert,
+.table,
+.popover,
+.dropdown-menu {
+    background-color: var(--surface-bg);
+    color: var(--text-color);
+    border-color: var(--border-color);
+}
+
+.text-muted {
+    color: var(--muted-text-color) !important;
+}
+
+.text-body {
+    color: var(--text-color) !important;
+}
+
+code {
+    color: var(--text-color);
+    background-color: var(--code-bg);
+    padding: 0.1rem 0.3rem;
+    border-radius: 0.25rem;
 }
 
