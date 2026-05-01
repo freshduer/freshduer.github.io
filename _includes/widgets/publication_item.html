@@ -1,4 +1,12 @@
 {% assign item = include.item %}
+{% assign cite_modal_id = 'cite-modal-' | append: item.id | slugify %}
+{% assign has_bibtex = false %}
+{% for link in item.links %}
+{% if link[1].bibtex %}
+{% assign has_bibtex = true %}
+{% break %}
+{% endif %}
+{% endfor %}
 <div class="d-none d-md-block">
     <div class="row no-gutters {% unless include.hide_bottom_border %}border-bottom{% endunless %} border-gray">
         <div class="col-md-4 col-xl-3 mb-md-0 p-md-3 d-flex align-items-center">
@@ -16,7 +24,9 @@
             
             <p class="small pb-0 mb-0 lh-125 text-muted abstract-links">
                 {% for link in item.links %}
-                {% if link[1].url %}
+                {% if link[1].bibtex %}
+                <a href="#" data-toggle="modal" data-target="#{{ cite_modal_id }}" onclick='window.setBibtexModalContent("{{ cite_modal_id }}", {{ link[1].bibtex | jsonify }}); return false;'>[{{ link[0] }}]</a>
+                {% elsif link[1].url %}
                 <a target="{{ link[1]['target'] }}" href="{{ link[1]['url'] }}">[{{ link[0] }}]</a>
                 {% else %}
                 <a target="_blank" href="{{ link[1] }}">[{{ link[0] }}]</a>
@@ -29,7 +39,7 @@
 </div>
 
 <div class="row no-gutters d-md-none {% unless include.hide_bottom_border %}border-bottom{% endunless %} border-gray {% if include.first %}rounded-top{% endif %} {% if include.last %}rounded-bottom{% endif %} {% if item.cover %}lazy{% endif %}" data-src="{{ item.cover | relative_url }}">
-    <div class="w-100" style="background-color: rgba(255,255,255,0.9);">
+    <div class="w-100 mobile-publication-surface">
         <div class="d-flex align-items-start flex-column py-3 px-4">
             <div class="mb-auto"></div>
             <div>
@@ -40,7 +50,9 @@
                 
                 <p class="small pb-0 mb-0 lh-125 text-muted abstract-links">
                     {% for link in item.links %}
-                    {% if link[1].url %}
+                    {% if link[1].bibtex %}
+                    <a href="#" data-toggle="modal" data-target="#{{ cite_modal_id }}" onclick='window.setBibtexModalContent("{{ cite_modal_id }}", {{ link[1].bibtex | jsonify }}); return false;'>[{{ link[0] }}]</a>
+                    {% elsif link[1].url %}
                     <a target="{{ link[1]['target'] }}" href="{{ link[1]['url'] }}">[{{ link[0] }}]</a>
                     {% else %}
                     <a target="_blank" href="{{ link[1] }}">[{{ link[0] }}]</a>
@@ -52,3 +64,71 @@
     </div>
 
 </div>
+
+{% if has_bibtex %}
+<div class="modal fade" id="{{ cite_modal_id }}" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h6 class="modal-title mb-0">Cite</h6>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <pre class="mb-0 p-3 bg-light rounded-sm"><code data-role="bibtex-content"></code></pre>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-outline-secondary" data-role="copy-btn" onclick='window.copyBibtexFromModal("{{ cite_modal_id }}");'>Copy BibTeX</button>
+                <button type="button" class="btn btn-primary" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
+{% endif %}
+
+<script>
+if (!window.setBibtexModalContent) {
+    window.setBibtexModalContent = function(modalId, bibtexText) {
+        var modal = document.getElementById(modalId);
+        if (!modal) return;
+        var bibtexNode = modal.querySelector('[data-role="bibtex-content"]');
+        var copyBtn = modal.querySelector('[data-role="copy-btn"]');
+        if (bibtexNode) {
+            bibtexNode.textContent = bibtexText || "";
+        }
+        if (copyBtn) {
+            copyBtn.textContent = "Copy BibTeX";
+        }
+    };
+}
+
+if (!window.copyBibtexFromModal) {
+    window.copyBibtexFromModal = function(modalId) {
+        var modal = document.getElementById(modalId);
+        if (!modal) return;
+        var bibtexNode = modal.querySelector('[data-role="bibtex-content"]');
+        var copyBtn = modal.querySelector('[data-role="copy-btn"]');
+        var text = bibtexNode ? bibtexNode.textContent : "";
+        if (!text) return;
+
+        var setCopiedState = function() {
+            if (copyBtn) {
+                copyBtn.textContent = "Copied!";
+                setTimeout(function() {
+                    copyBtn.textContent = "Copy BibTeX";
+                }, 1200);
+            }
+        };
+
+        if (navigator.clipboard && navigator.clipboard.writeText) {
+            navigator.clipboard.writeText(text).then(setCopiedState).catch(function() {
+                window.prompt("Copy BibTeX", text);
+            });
+            return;
+        }
+
+        window.prompt("Copy BibTeX", text);
+    };
+}
+</script>

@@ -161,3 +161,20 @@ code {
     border-radius: 0.25rem;
 }
 
+.mobile-publication-surface {
+    background-color: var(--surface-bg);
+}
+
+@media (max-width: 767.98px) {
+    .profile-entry-meta {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .profile-entry-meta .no-break {
+        margin-left: 0 !important;
+        margin-top: 0.15rem;
+        white-space: normal;
+    }
+}
+

@@ -2,7 +2,7 @@
     <div class="col">
         <div class="card border-0 shadow-sm bg-white">
             <div class="card-body p-4">
-                <div class="row" data-masonry='{"percentPosition": true }'>
+                <div class="row">
                     {% if site.data.profile.education %}
                     <div class="col-md-6 d-flex">
                         <div class="mx-2 my-1 w-100 h-100">
@@ -21,7 +21,7 @@
                                             </div>
                                         </div>
                                         <div class="small">{{ item.dept }}</div>
-                                        <div class="small d-flex">
+                                        <div class="small d-flex profile-entry-meta">
                                             <div>{{ item.position }}</div>
                                             <div class="mt-auto ml-auto no-break"><em>{{ item.date }}</em></div>
                                         </div>
@@ -29,6 +29,22 @@
                                 </li>
                                 {% endfor %}
                             </ul>
+
+                            {% if site.data.profile.awards %}
+                            <div class="mt-3">
+                                <h6>Honors & Awards</h6>
+                                <ul class="list small pl-3 mb-1">
+                                    {% for item in site.data.profile.awards %}
+                                    <li>
+                                        <div class="d-flex">
+                                            <div>{{ item.name }}</div>
+                                            <div class="ml-auto mt-auto no-break"><em>{{ item.date }}</em></div>
+                                        </div>
+                                    </li>
+                                    {% endfor %}
+                                </ul>
+                            </div>
+                            {% endif %}
                         </div>
                     </div>
                     {% endif %}
@@ -51,7 +67,7 @@
                                             </div>
                                         </div>
                                         <div class="small">{{ item.dept }}</div>
-                                        <div class="small d-flex">
+                                        <div class="small d-flex profile-entry-meta">
                                             <div>{{ item.position }}</div>
                                             <div class="mt-auto ml-auto no-break"><em>{{ item.date }}</em></div>
                                         </div>
@@ -63,7 +79,7 @@
                     </div>
                     {% endif %}
 
-                    {% if site.data.profile.awards %}
+                    {% if site.data.profile.awards and site.data.profile.education == nil %}
                     <div class="col-md-6">
                         <div class="mx-2 my-1">
                             <h6>Honors & Awards</h6>

@@ -2,7 +2,7 @@
 title:          "Near-Zero-Overhead Freshness for Recommendation Systems via Inference-Side Model Updates"
 date:           2026-11-08 00:00:00 +0800
 selected:       true
-pub:            "(<strong>HPCA 2026</strong>) IEEE International Symposium on High-Performance Computer Architecture"
+pub:            "(<strong>HPCA 2026, CCF-A</strong>) IEEE International Symposium on High-Performance Computer Architecture"
 # pub_post:       'Under review'
 # pub_date:       "2026"
 pub_ab:         "HPCA"
@@ -19,6 +19,16 @@ authors:
 
 links:
   Paper: https://arxiv.org/pdf/2512.12295
+  Cite:
+    bibtex: |-
+      @inproceedings{yu2026near,
+        title={Near-Zero-Overhead Freshness for Recommendation Systems via Inference-Side Model Updates},
+        author={Yu, Wenjun and Chen, Sitian and Chen, Cheng and Zhou, Amelie Chi},
+        booktitle={2026 IEEE International Symposium on High Performance Computer Architecture (HPCA)},
+        pages={1--15},
+        year={2026},
+        organization={IEEE}
+      }
   # Project: https://onethousandwu.com/3DPortraitGAN.github.io/
   # Code: https://github.com/oneThousand1000/3DPortraitGAN
   # Supplementary: https://drive.google.com/file/d/16aNE5USZ0U32bgGJS1G5xWrY0oIMTfre/view?usp=sharing
