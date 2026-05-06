@@ -107,7 +107,7 @@ albums:
       - src: /assets/images/travels/chongqing/2.jpg
       - src: /assets/images/travels/chongqing/3.jpg
       - src: /assets/images/travels/chongqing/4.jpg
-      - src: /assets/images/travels/chongqing/5.jpg
+      # - src: /assets/images/travels/chongqing/5.jpg
 
   - title: "Chengdu"
     date: "2024.10"

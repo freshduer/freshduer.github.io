@@ -1,5 +1,7 @@
 ---
-title:          "When Embedding Matters? Dynamic KV–Embedding Memory Allocation for Accelerating Generative Recommender Inference"
+#title:          "When Embedding Matters? Dynamic KV–Embedding Memory Allocation for Accelerating Generative Recommender Inference"
+title:          "One Pool, Two Caches: Adaptive HBM Partitioning for Accelerating
+Generative Recommender Serving"
 date:           2026-11-08 00:00:00 +0800
 selected:       true
 pub:            "(<strong>PrePrint 2026</strong>) "
@@ -7,7 +9,8 @@ pub_post:       'Under review'
 # pub_date:       "2026"
 pub_ab:         "PrePrint"
 
-abstract: >-
+abstract: >- 
+  Generative Recommender inference faces a dual memory bottleneck absent in LLM serving: embedding hot caches and KV caches compete for the same limited GPU HBM, yet existing systems optimize them in isolation. We present HELM, which jointly reallocates HBM between the two caches at runtime and routes requests via a joint EMB–KV-aware scheduler, reducing P99 latency by 24–38% while maintaining ≥93.5% SLO satisfaction across production workload regimes.
   
 
 cover:          /assets/images/publications/EMB-KV.png
