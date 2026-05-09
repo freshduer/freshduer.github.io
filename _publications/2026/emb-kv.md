@@ -20,6 +20,18 @@ authors:
   - Shuguang Han — Alibaba (XianYu)
 
 links:
+  Paper: https://arxiv.org/pdf/2605.04450
+  Cite:
+    bibtex: |-
+      @misc{yu2026one,
+        title={One Pool, Two Caches: Adaptive HBM Partitioning for Accelerating Generative Recommender Serving},
+        author={Wenjun Yu and Shuguang Han and Amelie Chi Zhou},
+        year={2026},
+        eprint={2605.04450},
+        archivePrefix={arXiv},
+        primaryClass={cs.DC},
+        url={https://arxiv.org/abs/2605.04450}
+      }
 #   Paper: https://arxiv.org/pdf/2512.12295
   # Project: https://onethousandwu.com/3DPortraitGAN.github.io/
   # Code: https://github.com/oneThousand1000/3DPortraitGAN

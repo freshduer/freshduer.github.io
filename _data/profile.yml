@@ -9,7 +9,7 @@ positions:
 
 location: Kowloon Tong, Hong Kong, China
 email: "cswjyu@comp.hkbu.edu.hk"
-# cv_link: /assets/cv/resume.pdf
+cv_link: /assets/cv/Resume_Wenjun.pdf
 # gscholar: UUM_zLwAAAAJ  # Google Scholar ID
 # github: PKUFlyingPig
 # twitter: YinminZhong  # Do not include the '@' symbol
@@ -70,7 +70,6 @@ experience:
   date: Aug. 2023 - Feb. 2025
 - name: ZhuoShi Private Equity Fund
   logo: /assets/images/badges/zhuoshi.png
-  # logo2: /assets/images/badges/logo-vlg-text.png
   position:  >- 
     Quantitative Trading System Developer Outstanding Intern
   date: Apr. 2022 - Sep. 2022

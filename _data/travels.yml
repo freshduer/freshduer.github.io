@@ -6,7 +6,10 @@ albums:
     lng: 113.2644
     description: 
     images: 
-      - src: /assets/images/travels/guagzhou/1.jpg
+      - src: /assets/images/travels/guangzhou/1.jpg
+      - src: /assets/images/travels/guangzhou/2.jpg
+      - src: /assets/images/travels/guangzhou/3.jpg
+      - src: /assets/images/travels/guangzhou/4.jpg
 
 
   - title: "Sydney"
@@ -82,7 +85,7 @@ albums:
     images:
       - src: /assets/images/travels/hongkong/1.jpg
       - src: /assets/images/travels/hongkong/2.jpg
-      # - src: /assets/images/travels/hongkong/3.jpg
+      - src: /assets/images/travels/hongkong/3.jpg
       - src: /assets/images/travels/hongkong/4.jpg
 
   - title: "Beijing"
