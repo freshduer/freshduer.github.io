@@ -1,5 +1,19 @@
 # 旅游相册：每个相册一行，可放文字记录，图片可左右切换
 albums:
+  - title: "Yangshuo"
+    date: "2026.4"
+    lat: 24.7743
+    lng: 110.4923
+    description: 
+    images: 
+      - src: /assets/images/travels/yangshuo/1.jpg
+      - src: /assets/images/travels/yangshuo/2.jpg
+      - src: /assets/images/travels/yangshuo/3.jpg
+      - src: /assets/images/travels/yangshuo/4.jpg
+      - src: /assets/images/travels/yangshuo/5.jpg
+      - src: /assets/images/travels/yangshuo/6.jpg
+
+
   - title: "GuangZhou"
     date: "2026.4"
     lat: 23.1291
@@ -73,8 +87,7 @@ albums:
     lat: 22.5831
     lng: 114.0009
     description: 
-    images: 
-      - src: /assets/images/travels/shenzhen/1.jpg
+    images: []
 
 
   - title: "Hong Kong"
