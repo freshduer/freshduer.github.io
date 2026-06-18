@@ -33,6 +33,37 @@
     });
 })();
 
+function syncPublicationCoverSizes() {
+    document.querySelectorAll('.publication-item-row').forEach(function(row) {
+        var textCol = row.querySelector('.publication-text-col');
+        var cover = row.querySelector('.publication-cover-img');
+        if (!textCol || !cover) return;
+
+        cover.style.maxHeight = '';
+        cover.style.width = '';
+        var textHeight = textCol.getBoundingClientRect().height;
+        cover.style.maxHeight = Math.round(textHeight) + 'px';
+        cover.style.width = 'auto';
+        cover.style.maxWidth = '100%';
+    });
+}
+
+function initPublicationCoverSync() {
+    syncPublicationCoverSizes();
+    window.addEventListener('resize', syncPublicationCoverSizes);
+
+    document.querySelectorAll('.publication-cover-img').forEach(function(cover) {
+        cover.addEventListener('load', syncPublicationCoverSizes);
+    });
+
+    if (typeof ResizeObserver !== 'undefined') {
+        var observer = new ResizeObserver(syncPublicationCoverSizes);
+        document.querySelectorAll('.publication-text-col').forEach(function(textCol) {
+            observer.observe(textCol);
+        });
+    }
+}
+
 $(function () {
     lazyLoadOptions = {
         scrollDirection: 'vertical',
@@ -46,6 +77,9 @@ $(function () {
             if (element.is('img')) {
                 // remove background-image style
                 element.css('background-image', 'none');
+                if (element.hasClass('publication-cover-img')) {
+                    syncPublicationCoverSizes();
+                }
             } else if (element.is('div')) {
                 // set the style to background-size: cover; 
                 element.css('background-size', 'cover');
@@ -72,4 +106,6 @@ $(function () {
     $(".lazy").on("load", function () {
         $grid.masonry('layout');
     });
+
+    initPublicationCoverSync();
 })

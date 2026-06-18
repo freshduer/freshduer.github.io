@@ -97,6 +97,19 @@ h1, h2, h3, h4, h5, h6,
     max-height: 120px;
 }
 
+.publication-cover-col {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.publication-cover-img {
+    max-width: 100%;
+    width: auto;
+    height: auto;
+    object-fit: contain;
+}
+
 .abstract-body {
     min-height: 100px;
 }
