@@ -1,0 +1,319 @@
+---
+layout: default
+title: Cooking
+navbar_title: Cooking
+---
+
+<style>
+  #cooking-page .cooking-lead { color: var(--muted-text-color); }
+  #cooking-page .cooking-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+    gap: 1.25rem;
+    margin-top: 1.5rem;
+    margin-bottom: 2rem;
+  }
+  #cooking-page .dish-card {
+    background: var(--surface-bg);
+    border: 1px solid var(--border-color);
+    border-radius: 0.75rem;
+    overflow: hidden;
+    box-shadow: 0 0.125rem 0.5rem rgba(0, 0, 0, 0.06);
+    cursor: pointer;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+  }
+  #cooking-page .dish-card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 0.5rem 1.25rem rgba(0, 0, 0, 0.1);
+  }
+  #cooking-page .dish-cover {
+    position: relative;
+    width: 100%;
+    aspect-ratio: 4 / 3;
+    background: linear-gradient(145deg, #f1f3f5 0%, #e9ecef 100%);
+    overflow: hidden;
+  }
+  html[data-theme="dark"] #cooking-page .dish-cover {
+    background: linear-gradient(145deg, #1c222c 0%, #12161d 100%);
+  }
+  #cooking-page .dish-cover img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+  #cooking-page .dish-cover.no-photo {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--muted-text-color);
+    font-size: 0.9rem;
+  }
+  #cooking-page .dish-count {
+    position: absolute;
+    right: 0.6rem;
+    bottom: 0.6rem;
+    padding: 0.2rem 0.55rem;
+    border-radius: 999px;
+    font-size: 0.75rem;
+    font-weight: 600;
+    color: #fff;
+    background: rgba(0, 0, 0, 0.55);
+  }
+  #cooking-page .dish-body { padding: 0.9rem 1rem 1.1rem; }
+  #cooking-page .dish-title {
+    font-size: 1.05rem;
+    font-weight: 700;
+    margin: 0 0 0.25rem;
+    color: var(--text-color);
+  }
+  #cooking-page .dish-date {
+    font-size: 0.82rem;
+    color: var(--muted-text-color);
+    margin-bottom: 0.4rem;
+  }
+  #cooking-page .dish-desc {
+    font-size: 0.9rem;
+    color: var(--muted-text-color);
+    margin: 0;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+  #cooking-page #cooking-lightbox {
+    position: fixed;
+    inset: 0;
+    z-index: 2000;
+    display: none;
+    align-items: center;
+    justify-content: center;
+    background: rgba(0, 0, 0, 0.78);
+    padding: 1.5rem;
+  }
+  #cooking-page #cooking-lightbox.is-open { display: flex; }
+  #cooking-page #cooking-lightbox img {
+    max-width: min(90vw, 1300px);
+    max-height: 82vh;
+    border-radius: 0.6rem;
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.45);
+  }
+  #cooking-page #cooking-lightbox-meta {
+    position: absolute;
+    left: 50%;
+    bottom: 1.1rem;
+    transform: translateX(-50%);
+    max-width: min(90vw, 640px);
+    text-align: center;
+    color: #fff;
+    text-shadow: 0 1px 4px rgba(0, 0, 0, 0.5);
+  }
+  #cooking-page #cooking-lightbox-meta .lb-title { font-weight: 700; font-size: 1rem; }
+  #cooking-page #cooking-lightbox-meta .lb-sub { font-size: 0.85rem; opacity: 0.9; }
+  #cooking-page #cooking-lightbox-close {
+    position: absolute;
+    top: 0.9rem;
+    right: 1rem;
+    width: 2.2rem;
+    height: 2.2rem;
+    border-radius: 999px;
+    border: none;
+    font-size: 1.4rem;
+    line-height: 1;
+    color: #fff;
+    background: rgba(0, 0, 0, 0.45);
+    cursor: pointer;
+  }
+  #cooking-page .cooking-lightbox-nav {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 2.6rem;
+    height: 2.6rem;
+    border-radius: 999px;
+    border: none;
+    font-size: 1.5rem;
+    line-height: 1;
+    color: #fff;
+    background: rgba(0, 0, 0, 0.45);
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  #cooking-page .cooking-lightbox-nav.prev { left: 1rem; }
+  #cooking-page .cooking-lightbox-nav.next { right: 1rem; }
+  #cooking-page .cooking-lightbox-nav:disabled { opacity: 0.35; cursor: not-allowed; }
+  @media (max-width: 576px) {
+    #cooking-page .cooking-grid { grid-template-columns: 1fr; gap: 1rem; }
+    #cooking-page .cooking-lightbox-nav { width: 2.2rem; height: 2.2rem; font-size: 1.3rem; }
+  }
+</style>
+
+<div id="cooking-page">
+  <div class="row justify-content-center">
+    <div class="col-12 col-lg-10">
+      <h1 class="pt-4">Cooking</h1>
+      <p class="lead cooking-lead">我做过的菜——点击卡片查看大图。</p>
+
+      {% if site.data.cooking.dishes and site.data.cooking.dishes.size > 0 %}
+        <div class="cooking-grid" id="cooking-grid">
+          {% for dish in site.data.cooking.dishes %}
+            {% assign cover = dish.images[0].src %}
+            <article class="dish-card" data-dish-idx="{{ forloop.index0 }}" tabindex="0" role="button" aria-label="查看 {{ dish.title }}">
+              <div class="dish-cover{% unless cover %} no-photo{% endunless %}">
+                {% if cover %}
+                  <img src="{{ cover | relative_url }}" alt="{{ dish.title }}" loading="lazy">
+                  {% if dish.images.size > 1 %}
+                    <span class="dish-count">{{ dish.images.size }} photos</span>
+                  {% endif %}
+                {% else %}
+                  <span>照片待补</span>
+                {% endif %}
+              </div>
+              <div class="dish-body">
+                <h2 class="dish-title">{{ dish.title }}</h2>
+                {% if dish.date and dish.date != "" %}
+                  <div class="dish-date">{{ dish.date }}</div>
+                {% endif %}
+                {% if dish.description and dish.description != "" %}
+                  <p class="dish-desc">{{ dish.description }}</p>
+                {% endif %}
+              </div>
+            </article>
+          {% endfor %}
+        </div>
+
+        <div id="cooking-lightbox" aria-hidden="true">
+          <button id="cooking-lightbox-close" type="button" aria-label="Close">&times;</button>
+          <button class="cooking-lightbox-nav prev" id="cooking-lightbox-prev" type="button" aria-label="Previous photo">&#10094;</button>
+          <img src="" alt="Cooking Photo">
+          <button class="cooking-lightbox-nav next" id="cooking-lightbox-next" type="button" aria-label="Next photo">&#10095;</button>
+          <div id="cooking-lightbox-meta">
+            <div class="lb-title"></div>
+            <div class="lb-sub"></div>
+          </div>
+        </div>
+
+        <script id="cooking-dishes-data" type="application/json">
+[
+{% for dish in site.data.cooking.dishes %}
+  {
+    "title": {{ dish.title | jsonify }},
+    "date": {{ dish.date | default: "" | jsonify }},
+    "description": {{ dish.description | default: "" | jsonify }},
+    "images": [{% for img in dish.images %}{{ img.src | relative_url | jsonify }}{% unless forloop.last %},{% endunless %}{% endfor %}]
+  }{% unless forloop.last %},{% endunless %}
+{% endfor %}
+]
+        </script>
+      {% else %}
+        <p class="text-muted">请在 <code>_data/cooking.yml</code> 中添加美食数据。</p>
+      {% endif %}
+    </div>
+  </div>
+</div>
+
+{% if site.data.cooking.dishes and site.data.cooking.dishes.size > 0 %}
+<script>
+  (function () {
+    var dataEl = document.getElementById("cooking-dishes-data");
+    if (!dataEl) return;
+    var dishes;
+    try { dishes = JSON.parse(dataEl.textContent || "[]"); } catch (e) { return; }
+
+    var lightbox = document.getElementById("cooking-lightbox");
+    var lightboxImg = lightbox ? lightbox.querySelector("img") : null;
+    var metaTitle = lightbox ? lightbox.querySelector(".lb-title") : null;
+    var metaSub = lightbox ? lightbox.querySelector(".lb-sub") : null;
+    var closeBtn = document.getElementById("cooking-lightbox-close");
+    var prevBtn = document.getElementById("cooking-lightbox-prev");
+    var nextBtn = document.getElementById("cooking-lightbox-next");
+    var currentDishIdx = -1;
+    var currentImageIdx = -1;
+
+    function getImages(dishIdx) {
+      return (dishes[dishIdx] && dishes[dishIdx].images) || [];
+    }
+
+    function renderLightboxImage() {
+      if (!lightbox || !lightboxImg || currentDishIdx < 0) return;
+      var dish = dishes[currentDishIdx];
+      var images = getImages(currentDishIdx);
+      if (!images.length) return;
+      lightboxImg.src = images[currentImageIdx];
+      lightboxImg.alt = (dish && dish.title) || "Cooking Photo";
+      if (metaTitle) metaTitle.textContent = (dish && dish.title) || "";
+      if (metaSub) {
+        var parts = [];
+        if (dish && dish.date) parts.push(dish.date);
+        if (images.length > 1) parts.push((currentImageIdx + 1) + " / " + images.length);
+        metaSub.textContent = parts.join(" · ");
+      }
+      if (prevBtn) prevBtn.disabled = currentImageIdx <= 0;
+      if (nextBtn) nextBtn.disabled = currentImageIdx >= images.length - 1;
+    }
+
+    function openLightbox(dishIdx, imageIdx) {
+      if (!lightbox || !lightboxImg) return;
+      var images = getImages(dishIdx);
+      if (!images.length) return;
+      currentDishIdx = dishIdx;
+      currentImageIdx = Math.min(Math.max(imageIdx || 0, 0), images.length - 1);
+      renderLightboxImage();
+      lightbox.classList.add("is-open");
+      lightbox.setAttribute("aria-hidden", "false");
+    }
+
+    function closeLightbox() {
+      if (!lightbox || !lightboxImg) return;
+      lightbox.classList.remove("is-open");
+      lightbox.setAttribute("aria-hidden", "true");
+      lightboxImg.src = "";
+      currentDishIdx = -1;
+      currentImageIdx = -1;
+    }
+
+    function showPrevPhoto() {
+      if (currentDishIdx < 0 || currentImageIdx <= 0) return;
+      currentImageIdx -= 1;
+      renderLightboxImage();
+    }
+
+    function showNextPhoto() {
+      var images = getImages(currentDishIdx);
+      if (currentDishIdx < 0 || currentImageIdx >= images.length - 1) return;
+      currentImageIdx += 1;
+      renderLightboxImage();
+    }
+
+    document.querySelectorAll(".dish-card").forEach(function (card) {
+      function tryOpen() {
+        var idx = Number(card.getAttribute("data-dish-idx"));
+        if (!getImages(idx).length) return;
+        openLightbox(idx, 0);
+      }
+      card.addEventListener("click", tryOpen);
+      card.addEventListener("keydown", function (e) {
+        if (e.key === "Enter" || e.key === " ") {
+          e.preventDefault();
+          tryOpen();
+        }
+      });
+    });
+
+    if (closeBtn) closeBtn.addEventListener("click", closeLightbox);
+    if (prevBtn) prevBtn.addEventListener("click", showPrevPhoto);
+    if (nextBtn) nextBtn.addEventListener("click", showNextPhoto);
+    if (lightbox) lightbox.addEventListener("click", function (e) {
+      if (e.target === lightbox) closeLightbox();
+    });
+    document.addEventListener("keydown", function (e) {
+      if (!lightbox || !lightbox.classList.contains("is-open")) return;
+      if (e.key === "Escape") closeLightbox();
+      if (e.key === "ArrowLeft") showPrevPhoto();
+      if (e.key === "ArrowRight") showNextPhoto();
+    });
+  })();
+</script>
+{% endif %}

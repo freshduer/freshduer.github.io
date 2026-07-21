@@ -1,5 +1,58 @@
 # 旅游相册：每个相册一行，可放文字记录，图片可左右切换
 albums:
+  - title: "Kyoto"
+    date: "2027.12"
+    lat: 35.0116
+    lng: 135.7681
+    description: ""
+    images: 
+      - src: /assets/images/travels/aboard/Kyoto/1.jpg
+      - src: /assets/images/travels/aboard/Kyoto/2.jpg
+      - src: /assets/images/travels/aboard/Kyoto/3.jpg
+
+  - title: "Taiwan"
+    date: "2027.3"
+    lat: 25.0375
+    lng: 121.5637
+    description: ""
+    images: 
+      - src: /assets/images/travels/aboard/Taiwan/1.jpg
+      - src: /assets/images/travels/aboard/Taiwan/2.jpg
+      - src: /assets/images/travels/aboard/Taiwan/3.jpg
+
+  - title: "Zhangjiajie"
+    date: "2027.1"
+    lat: 29.3703
+    lng: 110.4923
+    description: ""
+    images: 
+      - src: /assets/images/travels/zhangjiajie/1.jpg
+      - src: /assets/images/travels/zhangjiajie/2.jpg
+      - src: /assets/images/travels/zhangjiajie/3.jpg
+
+  - title: "Chigago"
+    date: "2026.11"
+    lat: 41.8781
+    lng: -87.6298
+    description: ""
+    images: 
+      - src: /assets/images/travels/aboard/Chigago/1.jpg
+      - src: /assets/images/travels/aboard/Chigago/2.jpg
+      - src: /assets/images/travels/aboard/Chigago/3.jpg
+
+  - title: "DaTong"
+    date: "2026.7"
+    lat: 37.8736
+    lng: 112.5685
+    description: 
+    images: 
+      - src: /assets/images/travels/DaTong/1.jpg
+      - src: /assets/images/travels/DaTong/2.jpg
+      - src: /assets/images/travels/DaTong/3.jpg
+      - src: /assets/images/travels/DaTong/4.jpg
+      - src: /assets/images/travels/DaTong/5.jpg
+      - src: /assets/images/travels/DaTong/6.jpg
+
   - title: "Yangshuo"
     date: "2026.4"
     lat: 24.7743
@@ -32,8 +85,8 @@ albums:
     lng: 151.2093
     description: 
     images: 
-      - src: /assets/images/travels/sydney/1.jpg
-      - src: /assets/images/travels/sydney/2.jpg
+      - src: /assets/images/travels/aboard/sydney/1.jpg
+      - src: /assets/images/travels/aboard/sydney/2.jpg
       - src: /assets/images/photos/profile-wenjun2.jpg
 
   - title: "Yueyang"
@@ -41,7 +94,8 @@ albums:
     lat: 29.3703
     lng: 113.1261
     description: 
-    images: []
+    images: 
+      - src: /assets/images/travels/yueyang/1.png
 
   - title: "JiuZhai Valley"
     date: "2025.11"
@@ -68,7 +122,7 @@ albums:
     lng: 113.5439
     description: ""
     images:
-      - src: /assets/images/travels/Macau/1.jpg
+      - src: /assets/images/travels/aboard/Macau/1.jpg
 
   - title: "Huang Mountain"
     date: "2025.4"
@@ -87,8 +141,8 @@ albums:
     lat: 22.5831
     lng: 114.0009
     description: 
-    images: []
-
+    images: 
+      - src: /assets/images/travels/shenzhen/1.jpg
 
   - title: "Hong Kong"
     date: "2025.2"
@@ -148,7 +202,8 @@ albums:
     lat: 39.1382
     lng: 117.1937
     description: ""
-    images: []
+    images: 
+      - src: /assets/images/travels/Tianjin/1.png
 
   - title: "Nanjing"
     date: "2023.7"
@@ -164,11 +219,23 @@ albums:
     lat: 45.8038
     lng: 126.5348
     description: ""
-    images: []
+    images: 
+      - src: /assets/images/travels/haerbin/1.png
 
   - title: "Tangshan"
     date: "2014.10"
     lat: 39.6306
     lng: 118.1754
     description: ""
-    images: []
+    images: 
+      - src: /assets/images/travels/tangshan/1.png
+
+  - title: "London"
+    date: "2012.8"
+    lat: 51.5074
+    lng: 0.1278
+    description: ""
+    images: 
+      - src: /assets/images/travels/aboard/London/1.png
+      - src: /assets/images/travels/aboard/London/2.png
+  

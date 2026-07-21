@@ -1,0 +1,76 @@
+# 生涯历程时间线（导航 Suanming；数据驱动）
+# type: education | work | award | life | milestone
+
+# 生涯时间线区块标题与开场白（在大运下方显示；每行一条会自动换行）
+page_title: "Career Timeline"
+page_lead:
+  - "恭喜你 发现了一个隐藏页面 这是我的生涯历程"
+
+events:
+  - date: "Sep. 2025 – present"
+    title: "Ph.D. Student"
+    org: "Hong Kong Baptist University"
+    type: education
+    description: "Computer Science, supervised by Prof. Amelie Chi Zhou. Research on DLRM training/serving optimization, generative RecSys acceleration, and GPU virtualization."
+    logo: /assets/images/badges/hkbu1.png
+
+  - date: "Feb. 2025 – Aug. 2025"
+    title: "Research Assistant"
+    org: "Hong Kong Baptist University"
+    type: Full-time work
+    description: "Joined the research group before starting the Ph.D. program."
+    logo: /assets/images/badges/hkbu1.png
+
+  - date: "Aug. 2023 – Feb. 2025"
+    title: "GPU Virtualization System Engineer"
+    org: "VirtAi Tech"
+    type: Full-time work
+    description: "Worked on GPU virtualization systems in industry."
+    logo: /assets/images/badges/virtaitech.png
+
+  - date: "July 2023"
+    title: "B.S. in Artificial Intelligence"
+    org: "Dalian University of Technology"
+    type: education
+    description: "Graduated from the School of Artificial Intelligence -- Future Technology Institute."
+    logo: /assets/images/badges/dut.png
+
+  - date: "Apr. 2022 – Sep. 2022"
+    title: "Quantitative Trading System Developer"
+    org: "ZhuoShi Private Equity Fund"
+    type: Intership work
+    description: "Outstanding Intern — built quantitative trading system components."
+    logo: /assets/images/badges/zhuoshi.png
+
+  - date: "Sep. 2019 – July 2023"
+    title: "B.S. in Artificial Intelligence"
+    org: "Dalian University of Technology"
+    type: education
+    description: "Graduated from the School of Artificial Intelligence / Future Technology."
+    logo: /assets/images/badges/dut.png
+
+  - date: "Sep. 2013 – July 2016"
+    title: "Middle School"
+    org: "Dalian Maritime University"
+    type: education
+    logo: /assets/images/badges/haishi.png
+    description: "Affiliated Middle School."
+
+  - date: "Sep. 2007 – July 2013"
+    title: "Primary School"
+    org: "Dalian Maritime University"
+    type: education
+    logo: /assets/images/badges/haishi.png
+    description: "Affiliated Primary School."
+
+  - date: "Sep. 2004 – July 2007"
+    title: "Kindergarten"
+    org: "Shenyang Military Region Command, Dalian"
+    type: education
+    logo: /assets/images/badges/bayi.png
+    # description: "Started kindergarten and the journey of formal education."
+
+  - date: "xx xx, 200x (隐藏哦)"
+    title: "Born in Dalian"
+    org: "Shahekou District, Dalian"
+    type: life start

@@ -1,0 +1,532 @@
+---
+layout: default
+title: Suanming
+navbar_title: Suanming
+---
+
+<style>
+  #timeline-page .tl-lead { color: var(--muted-text-color); max-width: 36rem; }
+  #timeline-page .tl-wrap {
+    --tl-gutter: 2rem;
+    --tl-rail: 0.5rem;
+    --tl-gap: 1.75rem;
+    position: relative;
+    margin: 2rem auto 3rem;
+    max-width: 720px;
+    padding-left: var(--tl-gutter);
+  }
+  #timeline-page .tl-wrap::before {
+    content: "";
+    position: absolute;
+    left: var(--tl-rail);
+    top: 0;
+    bottom: 0;
+    width: 2px;
+    transform: translateX(-50%);
+    background: linear-gradient(180deg, rgba(135, 206, 235, 0.95), rgba(135, 206, 235, 0.15));
+  }
+  #timeline-page .tl-item {
+    position: relative;
+    padding: 0 0 var(--tl-gap) 1.25rem;
+    opacity: 0;
+    transform: translateY(12px);
+    animation: tl-in 0.55s ease forwards;
+  }
+  #timeline-page .tl-item:nth-child(1) { animation-delay: 0.05s; }
+  #timeline-page .tl-item:nth-child(2) { animation-delay: 0.12s; }
+  #timeline-page .tl-item:nth-child(3) { animation-delay: 0.19s; }
+  #timeline-page .tl-item:nth-child(4) { animation-delay: 0.26s; }
+  #timeline-page .tl-item:nth-child(5) { animation-delay: 0.33s; }
+  #timeline-page .tl-item:nth-child(6) { animation-delay: 0.4s; }
+  #timeline-page .tl-item:nth-child(7) { animation-delay: 0.47s; }
+  #timeline-page .tl-item:nth-child(8) { animation-delay: 0.54s; }
+  #timeline-page .tl-item:nth-child(9) { animation-delay: 0.61s; }
+  #timeline-page .tl-item:nth-child(10) { animation-delay: 0.68s; }
+  #timeline-page .tl-item:last-child { padding-bottom: 0; }
+  @keyframes tl-in {
+    to { opacity: 1; transform: translateY(0); }
+  }
+  #timeline-page .tl-dot {
+    position: absolute;
+    left: calc(var(--tl-rail) - var(--tl-gutter));
+    top: 0;
+    bottom: var(--tl-gap);
+    width: 0.75rem;
+    height: 0.75rem;
+    margin-top: auto;
+    margin-bottom: auto;
+    border-radius: 50%;
+    background: #87ceeb;
+    border: 2px solid var(--surface-bg);
+    box-shadow: 0 0 0 2px rgba(135, 206, 235, 0.55);
+    transform: translateX(-50%);
+    z-index: 1;
+  }
+  #timeline-page .tl-item:last-child .tl-dot { bottom: 0; }
+  #timeline-page .tl-card {
+    background: var(--surface-bg);
+    border: 1px solid var(--border-color);
+    border-radius: 0.75rem;
+    padding: 1rem 1.15rem 1.1rem;
+    box-shadow: 0 0.125rem 0.5rem rgba(0, 0, 0, 0.05);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+  }
+  #timeline-page .tl-card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 0.5rem 1.25rem rgba(0, 0, 0, 0.08);
+  }
+  #timeline-page .tl-meta {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 0.75rem;
+    flex-wrap: wrap;
+    margin-bottom: 0.55rem;
+  }
+  #timeline-page .tl-date {
+    font-size: 0.82rem;
+    color: var(--muted-text-color);
+    letter-spacing: 0.01em;
+  }
+  #timeline-page .tl-badge {
+    font-size: 0.68rem;
+    font-weight: 700;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    padding: 0.22rem 0.55rem;
+    border-radius: 999px;
+    background: rgba(135, 206, 235, 0.28);
+    color: var(--text-color);
+  }
+  #timeline-page .tl-badge.work { background: rgba(52, 152, 219, 0.2); }
+  #timeline-page .tl-badge.education { background: rgba(135, 206, 235, 0.35); }
+  #timeline-page .tl-badge.award { background: rgba(241, 196, 15, 0.28); }
+  #timeline-page .tl-badge.life { background: rgba(155, 89, 182, 0.2); }
+  #timeline-page .tl-badge.milestone { background: rgba(46, 204, 113, 0.22); }
+  #timeline-page .tl-head {
+    display: flex;
+    align-items: flex-start;
+    gap: 0.75rem;
+  }
+  #timeline-page .tl-logo {
+    width: 2.25rem;
+    height: 2.25rem;
+    object-fit: contain;
+    border-radius: 0.35rem;
+    flex-shrink: 0;
+    background: #fff;
+    padding: 2px;
+  }
+  #timeline-page .tl-title {
+    font-size: 1.05rem;
+    font-weight: 700;
+    margin: 0 0 0.15rem;
+    color: var(--text-color);
+    line-height: 1.35;
+  }
+  #timeline-page .tl-org {
+    font-size: 0.9rem;
+    color: var(--muted-text-color);
+    margin: 0;
+  }
+  #timeline-page .tl-desc {
+    margin: 0.65rem 0 0;
+    font-size: 0.92rem;
+    color: var(--muted-text-color);
+    line-height: 1.55;
+  }
+  #timeline-page .dayun-section {
+    margin: 0.5rem 0 2rem;
+  }
+  #timeline-page .tl-section {
+    margin: 0.5rem 0 3rem;
+    padding-top: 1.5rem;
+    border-top: 1px solid var(--border-color);
+  }
+  #timeline-page .dayun-lead {
+    color: var(--muted-text-color);
+    max-width: 40rem;
+    margin-bottom: 1.25rem;
+  }
+  #timeline-page .dayun-meta-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem 1rem;
+    align-items: center;
+    margin-bottom: 1rem;
+    font-size: 0.9rem;
+    color: var(--muted-text-color);
+  }
+  #timeline-page .dayun-meta-row .dayun-pillars {
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    color: var(--text-color);
+  }
+  #timeline-page .dayun-plot {
+    background: var(--surface-bg);
+    border: 1px solid var(--border-color);
+    border-radius: 0.75rem;
+    padding: 1rem 0.75rem 0.5rem;
+    margin-bottom: 1.5rem;
+    box-shadow: 0 0.125rem 0.5rem rgba(0, 0, 0, 0.05);
+    position: relative;
+  }
+  #timeline-page .dayun-plot svg {
+    width: 100%;
+    height: auto;
+    display: block;
+  }
+  #timeline-page .dayun-tooltip {
+    position: absolute;
+    pointer-events: none;
+    z-index: 2;
+    display: none;
+    padding: 0.35rem 0.55rem;
+    border-radius: 0.4rem;
+    font-size: 0.78rem;
+    line-height: 1.35;
+    color: #fff;
+    background: rgba(33, 37, 41, 0.88);
+    white-space: nowrap;
+    transform: translate(-50%, -120%);
+  }
+  #timeline-page .dayun-tooltip.is-on { display: block; }
+  #timeline-page .dayun-feelings {
+    display: flex;
+    flex-direction: column;
+    gap: 0.85rem;
+  }
+  #timeline-page .dayun-card {
+    background: var(--surface-bg);
+    border: 1px solid var(--border-color);
+    border-radius: 0.75rem;
+    padding: 1rem 1.1rem;
+    box-shadow: 0 0.125rem 0.5rem rgba(0, 0, 0, 0.05);
+  }
+  #timeline-page .dayun-card.is-current {
+    border-color: rgba(135, 206, 235, 0.85);
+    box-shadow: 0 0.35rem 1.1rem rgba(135, 206, 235, 0.18);
+  }
+  #timeline-page .dayun-card-head {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    gap: 0.5rem;
+    flex-wrap: wrap;
+    margin-bottom: 0.75rem;
+  }
+  #timeline-page .dayun-pillar {
+    font-size: 1.1rem;
+    font-weight: 700;
+    margin: 0;
+    letter-spacing: 0.06em;
+  }
+  #timeline-page .dayun-span {
+    font-size: 0.82rem;
+    color: var(--muted-text-color);
+  }
+  #timeline-page .dayun-tag-now {
+    font-size: 0.68rem;
+    font-weight: 700;
+    padding: 0.2rem 0.5rem;
+    border-radius: 999px;
+    background: rgba(46, 204, 113, 0.28);
+  }
+  #timeline-page .dayun-half {
+    margin-bottom: 0.7rem;
+  }
+  #timeline-page .dayun-half:last-child { margin-bottom: 0; }
+  #timeline-page .dayun-half-label {
+    font-size: 0.75rem;
+    font-weight: 700;
+    color: var(--muted-text-color);
+    margin-bottom: 0.2rem;
+  }
+  #timeline-page .dayun-half-text {
+    margin: 0;
+    font-size: 0.92rem;
+    line-height: 1.6;
+    color: var(--muted-text-color);
+  }
+  @media (max-width: 576px) {
+    #timeline-page .tl-wrap {
+      --tl-gutter: 1.5rem;
+      --tl-rail: 0.4rem;
+    }
+    #timeline-page .tl-item { padding-left: 1rem; }
+  }
+</style>
+
+<div id="timeline-page">
+  <div class="row justify-content-center">
+    <div class="col-12 col-lg-9">
+
+      {% if site.data.dayun.periods and site.data.dayun.periods.size > 0 %}
+        <section class="dayun-section pt-4" aria-label="Da Yun Scores">
+          <h2 class="h3 mb-2">八字大运分数</h2>
+          <p class="dayun-lead">
+            {% for line in site.data.dayun.lead %}
+              {{ line }}{% unless forloop.last %}<br>{% endunless %}
+            {% endfor %}
+          </p>
+          <div class="dayun-meta-row">
+            <span class="dayun-pillars">{{ site.data.dayun.chart.pillars }}</span>
+            <span>{{ site.data.dayun.chart.note }}</span>
+            {% if site.data.dayun.chart.kline_url %}
+              <a href="{{ site.data.dayun.chart.kline_url }}" target="_blank" rel="noopener noreferrer">人生 K 线 →</a>
+            {% endif %}
+          </div>
+
+          <div class="dayun-plot" id="dayun-plot">
+            <div class="dayun-tooltip" id="dayun-tooltip"></div>
+            <svg id="dayun-score-svg" viewBox="0 0 640 268" role="img" aria-label="大运分数曲线"></svg>
+          </div>
+          <script id="dayun-score-data" type="application/json">
+[
+{% for p in site.data.dayun.periods %}
+  {
+    "pillar": {{ p.pillar | jsonify }},
+    "span": {{ p.span | jsonify }},
+    "age": {{ p.age | default: "" | jsonify }},
+    "early_years": {{ p.early_years | jsonify }},
+    "late_years": {{ p.late_years | jsonify }},
+    "score_early": {{ p.score_early }},
+    "score_late": {{ p.score_late }},
+    "current": {% if p.current %}true{% else %}false{% endif %}
+  }{% unless forloop.last %},{% endunless %}
+{% endfor %}
+]
+          </script>
+
+          <div class="dayun-feelings">
+            {% for p in site.data.dayun.periods %}
+              <article class="dayun-card{% if p.current %} is-current{% endif %}">
+                <div class="dayun-card-head">
+                  <div>
+                    <h3 class="dayun-pillar">{{ p.pillar }}</h3>
+                    <span class="dayun-span">{{ p.span }}{% if p.age %} · {{ p.age }}{% endif %}</span>
+                  </div>
+                  <div class="dayun-span">
+                    {% if p.current %}<span class="dayun-tag-now">当前</span>{% endif %}
+                    {% if p.score %}整体 {{ p.score }} 分{% endif %}
+                    {% if p.note %} · {{ p.note }}{% endif %}
+                  </div>
+                </div>
+                <div class="dayun-half">
+                  <div class="dayun-half-label">上五年 · {{ p.early_years }} · {{ p.score_early }} 分</div>
+                  <p class="dayun-half-text">{{ p.feeling_early }}</p>
+                </div>
+                <div class="dayun-half">
+                  <div class="dayun-half-label">下五年 · {{ p.late_years }} · {{ p.score_late }} 分</div>
+                  <p class="dayun-half-text">{{ p.feeling_late }}</p>
+                </div>
+              </article>
+            {% endfor %}
+          </div>
+        </section>
+
+        <script>
+          (function () {
+            var dataEl = document.getElementById("dayun-score-data");
+            var svg = document.getElementById("dayun-score-svg");
+            var plot = document.getElementById("dayun-plot");
+            var tip = document.getElementById("dayun-tooltip");
+            if (!dataEl || !svg || !plot) return;
+            var periods;
+            try { periods = JSON.parse(dataEl.textContent || "[]"); } catch (e) { return; }
+            if (!periods.length) return;
+
+            var points = [];
+            periods.forEach(function (p, idx) {
+              points.push({
+                periodIdx: idx,
+                half: "上五年",
+                years: p.early_years || "",
+                pillar: p.pillar,
+                span: p.span || "",
+                score: Number(p.score_early),
+                current: !!p.current
+              });
+              points.push({
+                periodIdx: idx,
+                half: "下五年",
+                years: p.late_years || "",
+                pillar: p.pillar,
+                span: p.span || "",
+                score: Number(p.score_late),
+                current: !!p.current
+              });
+            });
+
+            var W = 640, H = 268;
+            var pad = { t: 36, r: 18, b: 58, l: 36 };
+            var innerW = W - pad.l - pad.r;
+            var innerH = H - pad.t - pad.b;
+            var minY = 30, maxY = 100;
+            var n = points.length;
+
+            function xAt(i) { return pad.l + (n === 1 ? innerW / 2 : (i / (n - 1)) * innerW); }
+            function yAt(score) {
+              var t = (score - minY) / (maxY - minY);
+              return pad.t + innerH * (1 - t);
+            }
+
+            function catmullRom(pts) {
+              if (pts.length < 2) return "";
+              var d = "M " + pts[0][0] + " " + pts[0][1];
+              for (var i = 0; i < pts.length - 1; i++) {
+                var p0 = pts[Math.max(0, i - 1)];
+                var p1 = pts[i];
+                var p2 = pts[i + 1];
+                var p3 = pts[Math.min(pts.length - 1, i + 2)];
+                var c1x = p1[0] + (p2[0] - p0[0]) / 6;
+                var c1y = p1[1] + (p2[1] - p0[1]) / 6;
+                var c2x = p2[0] - (p3[0] - p1[0]) / 6;
+                var c2y = p2[1] - (p3[1] - p1[1]) / 6;
+                d += " C " + c1x + " " + c1y + ", " + c2x + " " + c2y + ", " + p2[0] + " " + p2[1];
+              }
+              return d;
+            }
+
+            var coords = points.map(function (p, i) { return [xAt(i), yAt(p.score)]; });
+            var linePath = catmullRom(coords);
+            var areaPath = linePath + " L " + coords[coords.length - 1][0] + " " + (pad.t + innerH) +
+              " L " + coords[0][0] + " " + (pad.t + innerH) + " Z";
+
+            function shortSpan(span) {
+              return String(span || "").replace(/\s+/g, "").replace("–", "-");
+            }
+
+            function showTip(i) {
+              if (!tip) return;
+              var p = points[i];
+              var x = coords[i][0];
+              tip.textContent = p.pillar + " · " + p.half + "（" + p.years + "）· " + p.score + " 分";
+              tip.style.left = (x / W * 100) + "%";
+              tip.style.top = "12%";
+              tip.classList.add("is-on");
+            }
+
+            function hideTip() {
+              if (!tip) return;
+              tip.classList.remove("is-on");
+            }
+
+            function render() {
+              var isDark = document.documentElement.getAttribute("data-theme") === "dark";
+              var axis = isDark ? "rgba(255,255,255,0.18)" : "rgba(0,0,0,0.12)";
+              var guide = isDark ? "rgba(255,255,255,0.35)" : "rgba(52,58,64,0.4)";
+              var labelColor = isDark ? "#aeb7c2" : "#6c757d";
+              var titleColor = isDark ? "#e8ecf1" : "#343a40";
+              var scoreColor = isDark ? "#d7e2ec" : "#495057";
+              var stroke = "#5aa8d0";
+              var fill = isDark ? "rgba(90,168,208,0.18)" : "rgba(135,206,235,0.28)";
+              var dot = "#87ceeb";
+              var dotCurrent = "#2ecc71";
+
+              var html = "";
+              [50, 70, 90].forEach(function (s) {
+                var y = yAt(s);
+                html += '<line x1="' + pad.l + '" y1="' + y + '" x2="' + (W - pad.r) + '" y2="' + y + '" stroke="' + axis + '" stroke-width="1" stroke-dasharray="3 4"/>';
+                html += '<text x="' + (pad.l - 6) + '" y="' + (y + 3) + '" text-anchor="end" font-size="10" fill="' + labelColor + '">' + s + "</text>";
+              });
+
+              html += '<line id="dayun-hover-guide" x1="0" y1="' + pad.t + '" x2="0" y2="' + (pad.t + innerH) + '" stroke="' + guide + '" stroke-width="1.5" stroke-dasharray="4 4" opacity="0"/>';
+              html += '<path d="' + areaPath + '" fill="' + fill + '" />';
+              html += '<path d="' + linePath + '" fill="none" stroke="' + stroke + '" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>';
+
+              // score numbers above each half-decade point
+              points.forEach(function (p, i) {
+                var x = coords[i][0], y = coords[i][1];
+                html += '<text x="' + x + '" y="' + (y - 10) + '" text-anchor="middle" font-size="10" font-weight="700" fill="' + scoreColor + '">' + p.score + "</text>";
+              });
+
+              points.forEach(function (p, i) {
+                var x = coords[i][0], y = coords[i][1];
+                var c = p.current ? dotCurrent : dot;
+                html += '<circle cx="' + x + '" cy="' + y + '" r="4" fill="' + c + '" stroke="' + (isDark ? "#171b22" : "#fff") + '" stroke-width="1.5"/>';
+                // invisible hit area
+                html += '<rect class="dayun-hit" data-idx="' + i + '" x="' + (x - 12) + '" y="' + pad.t + '" width="24" height="' + innerH + '" fill="transparent" style="cursor:pointer"/>';
+              });
+
+              periods.forEach(function (p, idx) {
+                var x1 = coords[idx * 2][0];
+                var x2 = coords[idx * 2 + 1][0];
+                var mid = (x1 + x2) / 2;
+                html += '<text x="' + mid + '" y="' + (H - 28) + '" text-anchor="middle" font-size="11" font-weight="700" fill="' + titleColor + '">' + p.pillar + "</text>";
+                html += '<text x="' + mid + '" y="' + (H - 12) + '" text-anchor="middle" font-size="9" fill="' + labelColor + '">' + shortSpan(p.span) + "</text>";
+              });
+
+              svg.innerHTML = html;
+
+              var guideEl = document.getElementById("dayun-hover-guide");
+              svg.querySelectorAll(".dayun-hit").forEach(function (hit) {
+                hit.addEventListener("mouseenter", function () {
+                  var i = Number(hit.getAttribute("data-idx"));
+                  var x = coords[i][0];
+                  if (guideEl) {
+                    guideEl.setAttribute("x1", x);
+                    guideEl.setAttribute("x2", x);
+                    guideEl.setAttribute("opacity", "1");
+                  }
+                  showTip(i);
+                });
+                hit.addEventListener("mouseleave", function () {
+                  if (guideEl) guideEl.setAttribute("opacity", "0");
+                  hideTip();
+                });
+              });
+            }
+
+            render();
+            new MutationObserver(render).observe(document.documentElement, { attributes: true, attributeFilter: ["data-theme"] });
+          })();
+        </script>
+      {% endif %}
+
+      <section class="tl-section" aria-label="Career Timeline">
+        <h2 class="h3 mb-2">{{ site.data.timeline.page_title | default: "Career Timeline" }}</h2>
+        <p class="lead tl-lead">
+          {% for line in site.data.timeline.page_lead %}
+            {{ line }}{% unless forloop.last %}<br>{% endunless %}
+          {% endfor %}
+        </p>
+      {% if site.data.timeline.events and site.data.timeline.events.size > 0 %}
+        <div class="tl-wrap">
+          {% for event in site.data.timeline.events %}
+            <div class="tl-item">
+              <span class="tl-dot" aria-hidden="true"></span>
+              <div class="tl-card">
+                <div class="tl-meta">
+                  <span class="tl-date">{{ event.date }}</span>
+                  {% if event.type %}
+                    <span class="tl-badge {{ event.type }}">{{ event.type }}</span>
+                  {% endif %}
+                </div>
+                <div class="tl-head">
+                  {% if event.logo %}
+                    <img class="tl-logo" src="{{ event.logo | relative_url }}" alt="">
+                  {% endif %}
+                  <div>
+                    <h2 class="tl-title">{{ event.title }}</h2>
+                    {% if event.org %}
+                      <p class="tl-org">{{ event.org }}</p>
+                    {% endif %}
+                  </div>
+                </div>
+                {% if event.description and event.description != "" %}
+                  <p class="tl-desc">{{ event.description }}</p>
+                {% endif %}
+              </div>
+            </div>
+          {% endfor %}
+        </div>
+      {% else %}
+        <p class="text-muted">请在 <code>_data/timeline.yml</code> 中添加历程条目。</p>
+      {% endif %}
+
+      </section>
+
+    </div>
+  </div>
+</div>

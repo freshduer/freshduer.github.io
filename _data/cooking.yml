@@ -1,0 +1,16 @@
+# 美食相册：每道菜/每次下厨是一个条目
+# 图片放在 assets/images/cooking/<文件夹>/ 下，然后在这里引用
+dishes:
+  # 示例（有照片后取消注释并改路径）：
+  # - title: "红烧肉"
+  #   date: "2026.7"
+  #   description: "慢火收汁，肥而不腻"
+  #   images:
+  #     - src: /assets/images/cooking/hongshaorou/1.jpg
+  #     - src: /assets/images/cooking/hongshaorou/2.jpg
+
+  - title: "Finished Cooking Recipes"
+    date: ""
+    description: ""
+    images: 
+      - src: /assets/images/cooking/list.jpg
