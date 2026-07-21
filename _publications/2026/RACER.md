@@ -2,7 +2,7 @@
 title:          "When KV Meets Embeddings: Dynamic GPU Memory Allocation for Accelerating Generative Recommender Serving"
 date:           2026-11-15 00:00:00 +0800
 selected:       true
-pub:            "(<strong>SC 2026, CCF-A</strong>) International Conference for High Performance Computing, Networking, Storage, and Analysis"
+pub:            "(<strong>SC 2026, CCF-A (19.2%)</strong>) International Conference for High Performance Computing, Networking, Storage, and Analysis"
 
 # pub_post:       'Under review'
 # pub_date:       "2026"

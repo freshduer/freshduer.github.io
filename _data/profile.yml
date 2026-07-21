@@ -38,9 +38,9 @@ short_bio: >-
 portraits:
   - url: /assets/images/photos/profile-wenjun.jpg
     caption: Taken in JiuZhai Valley, Nov. 2025.
-  - url: /assets/images/photos/profile-wenjun2.jpg
-    caption: Taken in Sydney, Feb. 2026.
   - url: /assets/images/photos/wenjun4.jpg
+    caption: Taken in Sydney, Feb. 2026.
+  - url: /assets/images/photos/profile-wenjun2.jpg
     caption: Taken in Sydney, Feb. 2026.
 
 

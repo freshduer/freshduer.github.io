@@ -5,10 +5,10 @@ albums:
     lat: 35.0116
     lng: 135.7681
     description: ""
-    images: 
-      - src: /assets/images/travels/aboard/Kyoto/1.jpg
-      - src: /assets/images/travels/aboard/Kyoto/2.jpg
-      - src: /assets/images/travels/aboard/Kyoto/3.jpg
+    images: []
+      # - src: /assets/images/travels/aboard/Kyoto/1.jpg
+      # - src: /assets/images/travels/aboard/Kyoto/2.jpg
+      # - src: /assets/images/travels/aboard/Kyoto/3.jpg
 
   - title: "Taiwan"
     date: "2027.3"

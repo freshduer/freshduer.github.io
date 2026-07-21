@@ -2,7 +2,7 @@
 title:          "Near-Zero-Overhead Freshness for Recommendation Systems via Inference-Side Model Updates"
 date:           2026-11-08 00:00:00 +0800
 selected:       true
-pub:            "(<strong>HPCA 2026, CCF-A</strong>) IEEE International Symposium on High-Performance Computer Architecture"
+pub:            "(<strong>HPCA 2026, CCF-A (19.7%)</strong>) IEEE International Symposium on High-Performance Computer Architecture"
 # pub_post:       'Under review'
 # pub_date:       "2026"
 pub_ab:         "HPCA"

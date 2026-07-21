@@ -8,8 +8,8 @@ navbar_title: Cooking
   #cooking-page .cooking-lead { color: var(--muted-text-color); }
   #cooking-page .cooking-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
-    gap: 1.25rem;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.15rem;
     margin-top: 1.5rem;
     margin-bottom: 2rem;
   }
@@ -30,6 +30,9 @@ navbar_title: Cooking
     position: relative;
     width: 100%;
     aspect-ratio: 4 / 3;
+    display: flex;
+    align-items: center;
+    justify-content: center;
     background: linear-gradient(145deg, #f1f3f5 0%, #e9ecef 100%);
     overflow: hidden;
   }
@@ -39,38 +42,65 @@ navbar_title: Cooking
   #cooking-page .dish-cover img {
     width: 100%;
     height: 100%;
-    object-fit: cover;
+    object-fit: contain;
+    object-position: center;
     display: block;
   }
-  #cooking-page .dish-cover.no-photo {
-    display: flex;
-    align-items: center;
-    justify-content: center;
+  #cooking-page .dish-cover.no-photo,
+  #cooking-page .dish-cover.is-broken {
     color: var(--muted-text-color);
     font-size: 0.9rem;
+    line-height: 1.4;
   }
-  #cooking-page .dish-count {
+  #cooking-page .dish-cover.is-broken img { display: none; }
+  #cooking-page .dish-badges {
     position: absolute;
-    right: 0.6rem;
-    bottom: 0.6rem;
+    left: 0.55rem;
+    right: 0.55rem;
+    bottom: 0.55rem;
+    z-index: 2;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.35rem;
+    justify-content: space-between;
+    align-items: flex-end;
+    pointer-events: none;
+    line-height: 1.3;
+  }
+  #cooking-page .dish-badge {
+    padding: 0.28rem 0.65rem;
+    border-radius: 999px;
+    font-size: 0.78rem;
+    font-weight: 700;
+    color: #fff;
+    line-height: 1.3;
+    box-shadow: 0 1px 4px rgba(0, 0, 0, 0.25);
+  }
+  #cooking-page .dish-badge.recipe {
+    background: rgba(28, 120, 78, 0.92);
+  }
+  #cooking-page .dish-badge.count {
+    background: rgba(0, 0, 0, 0.62);
+    margin-left: auto;
+  }
+  #cooking-page .dish-pinned {
+    position: absolute;
+    left: 0.6rem;
+    top: 0.6rem;
+    z-index: 2;
     padding: 0.2rem 0.55rem;
     border-radius: 999px;
     font-size: 0.75rem;
     font-weight: 600;
     color: #fff;
-    background: rgba(0, 0, 0, 0.55);
+    background: rgba(180, 100, 20, 0.88);
   }
-  #cooking-page .dish-body { padding: 0.9rem 1rem 1.1rem; }
+  #cooking-page .dish-body { padding: 0.75rem 1rem 1rem; }
   #cooking-page .dish-title {
     font-size: 1.05rem;
     font-weight: 700;
     margin: 0 0 0.25rem;
     color: var(--text-color);
-  }
-  #cooking-page .dish-date {
-    font-size: 0.82rem;
-    color: var(--muted-text-color);
-    margin-bottom: 0.4rem;
   }
   #cooking-page .dish-desc {
     font-size: 0.9rem;
@@ -81,35 +111,163 @@ navbar_title: Cooking
     -webkit-box-orient: vertical;
     overflow: hidden;
   }
-  #cooking-page #cooking-lightbox {
+
+  /* Detail modal */
+  #cooking-page #cooking-modal {
     position: fixed;
     inset: 0;
     z-index: 2000;
     display: none;
     align-items: center;
     justify-content: center;
-    background: rgba(0, 0, 0, 0.78);
+    background: rgba(0, 0, 0, 0.72);
+    padding: 1rem;
+  }
+  #cooking-page #cooking-modal.is-open { display: flex; }
+  #cooking-page .cooking-modal-panel {
+    position: relative;
+    width: min(960px, 96vw);
+    max-height: 92vh;
+    overflow: auto;
+    background: var(--surface-bg, #fff);
+    border-radius: 0.85rem;
+    box-shadow: 0 12px 40px rgba(0, 0, 0, 0.35);
+    color: var(--text-color);
+  }
+  #cooking-page .cooking-modal-close {
+    position: sticky;
+    top: 0.75rem;
+    float: right;
+    margin: 0.75rem 0.75rem 0 0;
+    z-index: 2;
+    width: 2.2rem;
+    height: 2.2rem;
+    border-radius: 999px;
+    border: none;
+    font-size: 1.4rem;
+    line-height: 1;
+    color: #fff;
+    background: rgba(0, 0, 0, 0.45);
+    cursor: pointer;
+  }
+  #cooking-page .cooking-modal-body { padding: 1.25rem 1.5rem 1.75rem; clear: both; }
+  #cooking-page .cooking-modal-title {
+    font-size: 1.45rem;
+    font-weight: 700;
+    margin: 0 0 0.3rem;
+    padding-right: 2.5rem;
+  }
+  #cooking-page .cooking-modal-desc {
+    font-size: 0.95rem;
+    color: var(--muted-text-color);
+    margin: 0 0 1.1rem;
+  }
+  #cooking-page .cooking-modal-layout {
+    display: grid;
+    grid-template-columns: 1.15fr 0.85fr;
+    gap: 1.4rem;
+    align-items: start;
+  }
+  #cooking-page .cooking-modal-photos { min-width: 0; }
+  #cooking-page .cooking-main-photo-wrap {
+    background: linear-gradient(145deg, #f1f3f5 0%, #e9ecef 100%);
+    border-radius: 0.6rem;
+    overflow: hidden;
+    border: 1px solid var(--border-color);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 200px;
+    aspect-ratio: 4 / 3;
+  }
+  html[data-theme="dark"] #cooking-page .cooking-main-photo-wrap {
+    background: linear-gradient(145deg, #1c222c 0%, #12161d 100%);
+  }
+  #cooking-page .cooking-main-photo-wrap img {
+    width: 100%;
+    height: 100%;
+    max-height: none;
+    object-fit: contain;
+    object-position: center;
+    display: block;
+    cursor: zoom-in;
+  }
+  #cooking-page .cooking-thumbs {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.45rem;
+    margin-top: 0.65rem;
+  }
+  #cooking-page .cooking-thumb {
+    width: 64px;
+    height: 64px;
+    border-radius: 0.4rem;
+    object-fit: cover;
+    border: 2px solid transparent;
+    cursor: pointer;
+    opacity: 0.75;
+    transition: opacity 0.15s ease, border-color 0.15s ease;
+  }
+  #cooking-page .cooking-thumb:hover { opacity: 1; }
+  #cooking-page .cooking-thumb.is-active {
+    opacity: 1;
+    border-color: #2f6fed;
+  }
+  #cooking-page .cooking-recipe h3 {
+    font-size: 1.05rem;
+    font-weight: 700;
+    margin: 0 0 0.65rem;
+  }
+  #cooking-page .cooking-recipe-section + .cooking-recipe-section { margin-top: 1.1rem; }
+  #cooking-page .cooking-recipe-label {
+    font-size: 0.8rem;
+    font-weight: 700;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    color: var(--muted-text-color);
+    margin-bottom: 0.4rem;
+  }
+  #cooking-page .cooking-ingredients,
+  #cooking-page .cooking-steps {
+    margin: 0;
+    padding-left: 1.15rem;
+    font-size: 0.92rem;
+    line-height: 1.55;
+    color: var(--text-color);
+  }
+  #cooking-page .cooking-ingredients li,
+  #cooking-page .cooking-steps li { margin-bottom: 0.35rem; }
+  #cooking-page .cooking-recipe-empty {
+    font-size: 0.9rem;
+    color: var(--muted-text-color);
+    margin: 0;
+  }
+  #cooking-page .cooking-note {
+    font-size: 0.95rem;
+    line-height: 1.6;
+    color: var(--text-color);
+    margin: 0;
+  }
+
+  /* Fullscreen lightbox for zoomed photo */
+  #cooking-page #cooking-lightbox {
+    position: fixed;
+    inset: 0;
+    z-index: 2100;
+    display: none;
+    align-items: center;
+    justify-content: center;
+    background: rgba(0, 0, 0, 0.85);
     padding: 1.5rem;
   }
   #cooking-page #cooking-lightbox.is-open { display: flex; }
   #cooking-page #cooking-lightbox img {
-    max-width: min(90vw, 1300px);
-    max-height: 82vh;
-    border-radius: 0.6rem;
+    max-width: min(96vw, 1400px);
+    max-height: 90vh;
+    object-fit: contain;
+    border-radius: 0.5rem;
     box-shadow: 0 8px 30px rgba(0, 0, 0, 0.45);
   }
-  #cooking-page #cooking-lightbox-meta {
-    position: absolute;
-    left: 50%;
-    bottom: 1.1rem;
-    transform: translateX(-50%);
-    max-width: min(90vw, 640px);
-    text-align: center;
-    color: #fff;
-    text-shadow: 0 1px 4px rgba(0, 0, 0, 0.5);
-  }
-  #cooking-page #cooking-lightbox-meta .lb-title { font-weight: 700; font-size: 1rem; }
-  #cooking-page #cooking-lightbox-meta .lb-sub { font-size: 0.85rem; opacity: 0.9; }
   #cooking-page #cooking-lightbox-close {
     position: absolute;
     top: 0.9rem;
@@ -144,6 +302,15 @@ navbar_title: Cooking
   #cooking-page .cooking-lightbox-nav.prev { left: 1rem; }
   #cooking-page .cooking-lightbox-nav.next { right: 1rem; }
   #cooking-page .cooking-lightbox-nav:disabled { opacity: 0.35; cursor: not-allowed; }
+
+  @media (max-width: 992px) {
+    #cooking-page .cooking-grid { grid-template-columns: repeat(2, 1fr); }
+  }
+  @media (max-width: 768px) {
+    #cooking-page .cooking-modal-layout { grid-template-columns: 1fr; }
+    #cooking-page .cooking-modal-body { padding: 1rem 1.1rem 1.4rem; }
+    #cooking-page .cooking-main-photo-wrap img { max-height: 40vh; }
+  }
   @media (max-width: 576px) {
     #cooking-page .cooking-grid { grid-template-columns: 1fr; gap: 1rem; }
     #cooking-page .cooking-lightbox-nav { width: 2.2rem; height: 2.2rem; font-size: 1.3rem; }
@@ -154,28 +321,47 @@ navbar_title: Cooking
   <div class="row justify-content-center">
     <div class="col-12 col-lg-10">
       <h1 class="pt-4">Cooking</h1>
-      <p class="lead cooking-lead">我做过的菜——点击卡片查看大图。</p>
+      <p class="lead cooking-lead">我做过的菜——点击卡片查看照片与做法。</p>
 
       {% if site.data.cooking.dishes and site.data.cooking.dishes.size > 0 %}
+        {% assign pinned_dishes = site.data.cooking.dishes | where: "pinned", true %}
+        {% assign cooking_dishes = pinned_dishes %}
+        {% for dish in site.data.cooking.dishes %}
+          {% unless dish.pinned %}
+            {% assign cooking_dishes = cooking_dishes | push: dish %}
+          {% endunless %}
+        {% endfor %}
         <div class="cooking-grid" id="cooking-grid">
-          {% for dish in site.data.cooking.dishes %}
+          {% for dish in cooking_dishes %}
             {% assign cover = dish.images[0].src %}
-            <article class="dish-card" data-dish-idx="{{ forloop.index0 }}" tabindex="0" role="button" aria-label="查看 {{ dish.title }}">
+            {% assign has_recipe = false %}
+            {% if dish.ingredients and dish.ingredients.size > 0 %}{% assign has_recipe = true %}{% endif %}
+            {% if dish.steps and dish.steps.size > 0 %}{% assign has_recipe = true %}{% endif %}
+            <article class="dish-card{% if dish.pinned %} is-pinned{% endif %}" data-dish-idx="{{ forloop.index0 }}" tabindex="0" role="button" aria-label="查看 {{ dish.title }}">
               <div class="dish-cover{% unless cover %} no-photo{% endunless %}">
                 {% if cover %}
-                  <img src="{{ cover | relative_url }}" alt="{{ dish.title }}" loading="lazy">
-                  {% if dish.images.size > 1 %}
-                    <span class="dish-count">{{ dish.images.size }} photos</span>
-                  {% endif %}
+                  <img src="{{ cover | relative_url }}" alt="{{ dish.title }}" loading="lazy" onerror="var c=this.closest('.dish-cover'); if(c && !c.classList.contains('is-broken')){c.classList.add('is-broken'); this.insertAdjacentHTML('afterend','<span>照片待补</span>');}">
                 {% else %}
                   <span>照片待补</span>
+                {% endif %}
+                {% if dish.pinned %}
+                  <span class="dish-pinned">置顶</span>
+                {% endif %}
+                {% if has_recipe %}
+                  <div class="dish-badges">
+                    <span class="dish-badge recipe">有做法教程</span>
+                    {% if dish.images and dish.images.size > 0 %}
+                      <span class="dish-badge count">{{ dish.images.size }} 张图</span>
+                    {% endif %}
+                  </div>
+                {% elsif dish.images and dish.images.size > 1 %}
+                  <div class="dish-badges">
+                    <span class="dish-badge count">{{ dish.images.size }} 张图</span>
+                  </div>
                 {% endif %}
               </div>
               <div class="dish-body">
                 <h2 class="dish-title">{{ dish.title }}</h2>
-                {% if dish.date and dish.date != "" %}
-                  <div class="dish-date">{{ dish.date }}</div>
-                {% endif %}
                 {% if dish.description and dish.description != "" %}
                   <p class="dish-desc">{{ dish.description }}</p>
                 {% endif %}
@@ -184,24 +370,41 @@ navbar_title: Cooking
           {% endfor %}
         </div>
 
+        <div id="cooking-modal" aria-hidden="true">
+          <div class="cooking-modal-panel" role="dialog" aria-modal="true" aria-labelledby="cooking-modal-title">
+            <button class="cooking-modal-close" id="cooking-modal-close" type="button" aria-label="Close">&times;</button>
+            <div class="cooking-modal-body">
+              <h2 class="cooking-modal-title" id="cooking-modal-title"></h2>
+              <p class="cooking-modal-desc" id="cooking-modal-desc"></p>
+              <div class="cooking-modal-layout">
+                <div class="cooking-modal-photos">
+                  <div class="cooking-main-photo-wrap">
+                    <img id="cooking-main-photo" src="" alt="">
+                  </div>
+                  <div class="cooking-thumbs" id="cooking-thumbs"></div>
+                </div>
+                <div class="cooking-recipe" id="cooking-recipe"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+
         <div id="cooking-lightbox" aria-hidden="true">
           <button id="cooking-lightbox-close" type="button" aria-label="Close">&times;</button>
           <button class="cooking-lightbox-nav prev" id="cooking-lightbox-prev" type="button" aria-label="Previous photo">&#10094;</button>
           <img src="" alt="Cooking Photo">
           <button class="cooking-lightbox-nav next" id="cooking-lightbox-next" type="button" aria-label="Next photo">&#10095;</button>
-          <div id="cooking-lightbox-meta">
-            <div class="lb-title"></div>
-            <div class="lb-sub"></div>
-          </div>
         </div>
 
         <script id="cooking-dishes-data" type="application/json">
 [
-{% for dish in site.data.cooking.dishes %}
+{% for dish in cooking_dishes %}
   {
     "title": {{ dish.title | jsonify }},
-    "date": {{ dish.date | default: "" | jsonify }},
     "description": {{ dish.description | default: "" | jsonify }},
+    "note": {{ dish.note | default: "" | jsonify }},
+    "ingredients": [{% for item in dish.ingredients %}{{ item | jsonify }}{% unless forloop.last %},{% endunless %}{% endfor %}],
+    "steps": [{% for step in dish.steps %}{{ step | jsonify }}{% unless forloop.last %},{% endunless %}{% endfor %}],
     "images": [{% for img in dish.images %}{{ img.src | relative_url | jsonify }}{% unless forloop.last %},{% endunless %}{% endfor %}]
   }{% unless forloop.last %},{% endunless %}
 {% endfor %}
@@ -222,45 +425,137 @@ navbar_title: Cooking
     var dishes;
     try { dishes = JSON.parse(dataEl.textContent || "[]"); } catch (e) { return; }
 
+    var modal = document.getElementById("cooking-modal");
+    var modalClose = document.getElementById("cooking-modal-close");
+    var modalTitle = document.getElementById("cooking-modal-title");
+    var modalDesc = document.getElementById("cooking-modal-desc");
+    var mainPhoto = document.getElementById("cooking-main-photo");
+    var thumbsEl = document.getElementById("cooking-thumbs");
+    var recipeEl = document.getElementById("cooking-recipe");
+
     var lightbox = document.getElementById("cooking-lightbox");
     var lightboxImg = lightbox ? lightbox.querySelector("img") : null;
-    var metaTitle = lightbox ? lightbox.querySelector(".lb-title") : null;
-    var metaSub = lightbox ? lightbox.querySelector(".lb-sub") : null;
-    var closeBtn = document.getElementById("cooking-lightbox-close");
+    var lightboxClose = document.getElementById("cooking-lightbox-close");
     var prevBtn = document.getElementById("cooking-lightbox-prev");
     var nextBtn = document.getElementById("cooking-lightbox-next");
+
     var currentDishIdx = -1;
     var currentImageIdx = -1;
 
-    function getImages(dishIdx) {
-      return (dishes[dishIdx] && dishes[dishIdx].images) || [];
+    function getDish(idx) { return dishes[idx] || null; }
+    function getImages(idx) {
+      var dish = getDish(idx);
+      return (dish && dish.images) || [];
     }
 
-    function renderLightboxImage() {
-      if (!lightbox || !lightboxImg || currentDishIdx < 0) return;
-      var dish = dishes[currentDishIdx];
+    function escapeHtml(str) {
+      return String(str == null ? "" : str)
+        .replace(/&/g, "&amp;")
+        .replace(/</g, "&lt;")
+        .replace(/>/g, "&gt;")
+        .replace(/"/g, "&quot;");
+    }
+
+    function renderRecipe(dish) {
+      if (!recipeEl) return;
+      var note = (dish && dish.note) || "";
+      var ingredients = (dish && dish.ingredients) || [];
+      var steps = (dish && dish.steps) || [];
+      if (!ingredients.length && !steps.length) {
+        if (note) {
+          recipeEl.innerHTML = "<h3>备注</h3><p class=\"cooking-note\">" + escapeHtml(note) + "</p>";
+        } else {
+          recipeEl.innerHTML = "<h3>做法</h3><p class=\"cooking-recipe-empty\">还没有记录做法。在 <code>_data/cooking.yml</code> 里为这道菜加上 <code>ingredients</code> 和 <code>steps</code> 即可。</p>";
+        }
+        return;
+      }
+      var html = "<h3>做法</h3>";
+      if (ingredients.length) {
+        html += "<div class=\"cooking-recipe-section\"><div class=\"cooking-recipe-label\">食材</div><ul class=\"cooking-ingredients\">";
+        ingredients.forEach(function (item) {
+          html += "<li>" + escapeHtml(item) + "</li>";
+        });
+        html += "</ul></div>";
+      }
+      if (steps.length) {
+        html += "<div class=\"cooking-recipe-section\"><div class=\"cooking-recipe-label\">步骤</div><ol class=\"cooking-steps\">";
+        steps.forEach(function (step) {
+          html += "<li>" + escapeHtml(step) + "</li>";
+        });
+        html += "</ol></div>";
+      }
+      if (note) {
+        html += "<div class=\"cooking-recipe-section\"><div class=\"cooking-recipe-label\">备注</div><p class=\"cooking-note\">" + escapeHtml(note) + "</p></div>";
+      }
+      recipeEl.innerHTML = html;
+    }
+
+    function renderThumbs() {
+      if (!thumbsEl) return;
       var images = getImages(currentDishIdx);
-      if (!images.length) return;
-      lightboxImg.src = images[currentImageIdx];
-      lightboxImg.alt = (dish && dish.title) || "Cooking Photo";
-      if (metaTitle) metaTitle.textContent = (dish && dish.title) || "";
-      if (metaSub) {
-        var parts = [];
-        if (dish && dish.date) parts.push(dish.date);
-        if (images.length > 1) parts.push((currentImageIdx + 1) + " / " + images.length);
-        metaSub.textContent = parts.join(" · ");
+      thumbsEl.innerHTML = "";
+      if (images.length <= 1) return;
+      images.forEach(function (src, i) {
+        var img = document.createElement("img");
+        img.className = "cooking-thumb" + (i === currentImageIdx ? " is-active" : "");
+        img.src = src;
+        img.alt = "缩略图 " + (i + 1);
+        img.addEventListener("click", function (e) {
+          e.stopPropagation();
+          currentImageIdx = i;
+          syncPhotos();
+        });
+        thumbsEl.appendChild(img);
+      });
+    }
+
+    function syncPhotos() {
+      var dish = getDish(currentDishIdx);
+      var images = getImages(currentDishIdx);
+      if (!images.length || !mainPhoto) return;
+      mainPhoto.src = images[currentImageIdx];
+      mainPhoto.alt = (dish && dish.title) || "Cooking Photo";
+      renderThumbs();
+      if (lightboxImg && lightbox && lightbox.classList.contains("is-open")) {
+        lightboxImg.src = images[currentImageIdx];
+        lightboxImg.alt = mainPhoto.alt;
       }
       if (prevBtn) prevBtn.disabled = currentImageIdx <= 0;
       if (nextBtn) nextBtn.disabled = currentImageIdx >= images.length - 1;
     }
 
-    function openLightbox(dishIdx, imageIdx) {
-      if (!lightbox || !lightboxImg) return;
-      var images = getImages(dishIdx);
-      if (!images.length) return;
+    function openModal(dishIdx) {
+      var dish = getDish(dishIdx);
+      if (!dish || !modal) return;
       currentDishIdx = dishIdx;
-      currentImageIdx = Math.min(Math.max(imageIdx || 0, 0), images.length - 1);
-      renderLightboxImage();
+      currentImageIdx = 0;
+      if (modalTitle) modalTitle.textContent = dish.title || "";
+      if (modalDesc) {
+        modalDesc.textContent = dish.description || "";
+        modalDesc.style.display = dish.description ? "" : "none";
+      }
+      renderRecipe(dish);
+      syncPhotos();
+      modal.classList.add("is-open");
+      modal.setAttribute("aria-hidden", "false");
+    }
+
+    function closeModal() {
+      if (!modal) return;
+      closeLightbox();
+      modal.classList.remove("is-open");
+      modal.setAttribute("aria-hidden", "true");
+      currentDishIdx = -1;
+      currentImageIdx = -1;
+    }
+
+    function openLightbox() {
+      var images = getImages(currentDishIdx);
+      if (!lightbox || !lightboxImg || !images.length) return;
+      lightboxImg.src = images[currentImageIdx];
+      lightboxImg.alt = (getDish(currentDishIdx) && getDish(currentDishIdx).title) || "Cooking Photo";
+      if (prevBtn) prevBtn.disabled = currentImageIdx <= 0;
+      if (nextBtn) nextBtn.disabled = currentImageIdx >= images.length - 1;
       lightbox.classList.add("is-open");
       lightbox.setAttribute("aria-hidden", "false");
     }
@@ -270,28 +565,25 @@ navbar_title: Cooking
       lightbox.classList.remove("is-open");
       lightbox.setAttribute("aria-hidden", "true");
       lightboxImg.src = "";
-      currentDishIdx = -1;
-      currentImageIdx = -1;
     }
 
     function showPrevPhoto() {
       if (currentDishIdx < 0 || currentImageIdx <= 0) return;
       currentImageIdx -= 1;
-      renderLightboxImage();
+      syncPhotos();
     }
 
     function showNextPhoto() {
       var images = getImages(currentDishIdx);
       if (currentDishIdx < 0 || currentImageIdx >= images.length - 1) return;
       currentImageIdx += 1;
-      renderLightboxImage();
+      syncPhotos();
     }
 
     document.querySelectorAll(".dish-card").forEach(function (card) {
       function tryOpen() {
         var idx = Number(card.getAttribute("data-dish-idx"));
-        if (!getImages(idx).length) return;
-        openLightbox(idx, 0);
+        openModal(idx);
       }
       card.addEventListener("click", tryOpen);
       card.addEventListener("keydown", function (e) {
@@ -302,17 +594,37 @@ navbar_title: Cooking
       });
     });
 
-    if (closeBtn) closeBtn.addEventListener("click", closeLightbox);
+    if (mainPhoto) {
+      mainPhoto.addEventListener("click", function () {
+        if (getImages(currentDishIdx).length) openLightbox();
+      });
+    }
+    if (modalClose) modalClose.addEventListener("click", closeModal);
+    if (modal) {
+      modal.addEventListener("click", function (e) {
+        if (e.target === modal) closeModal();
+      });
+    }
+    if (lightboxClose) lightboxClose.addEventListener("click", closeLightbox);
     if (prevBtn) prevBtn.addEventListener("click", showPrevPhoto);
     if (nextBtn) nextBtn.addEventListener("click", showNextPhoto);
-    if (lightbox) lightbox.addEventListener("click", function (e) {
-      if (e.target === lightbox) closeLightbox();
-    });
+    if (lightbox) {
+      lightbox.addEventListener("click", function (e) {
+        if (e.target === lightbox) closeLightbox();
+      });
+    }
     document.addEventListener("keydown", function (e) {
-      if (!lightbox || !lightbox.classList.contains("is-open")) return;
-      if (e.key === "Escape") closeLightbox();
-      if (e.key === "ArrowLeft") showPrevPhoto();
-      if (e.key === "ArrowRight") showNextPhoto();
+      if (lightbox && lightbox.classList.contains("is-open")) {
+        if (e.key === "Escape") { closeLightbox(); return; }
+        if (e.key === "ArrowLeft") showPrevPhoto();
+        if (e.key === "ArrowRight") showNextPhoto();
+        return;
+      }
+      if (modal && modal.classList.contains("is-open")) {
+        if (e.key === "Escape") closeModal();
+        if (e.key === "ArrowLeft") showPrevPhoto();
+        if (e.key === "ArrowRight") showNextPhoto();
+      }
     });
   })();
 </script>
