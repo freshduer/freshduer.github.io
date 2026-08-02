@@ -22,14 +22,14 @@ orcid: 0009-0006-3171-3240
 short_bio_text_justify: false
 short_bio: >-
   <p>
-  I am Wenjun Yu (俞文军), a first-year Ph.D. student in Computer Science at Hong Kong Baptist University, 
+  I am Wenjun Yu (俞文军), a second-year Ph.D. student in Computer Science at Hong Kong Baptist University, 
   supervised by Prof. <a href="https://amelieczhou.github.io/" class="profile_href">Amelie Chi Zhou</a>. 
   Prior to that, I received my B.S. in Artificial Intelligence from Dalian University of Technology.</p>
   <p>
   My research interests lie broadly in DLRM training/serving optimization, generative RecSys acceleration and GPU Virtualization techniques.</p>
   <p>
   Outside of my academic work, I'm deeply curious about traditional Chinese metaphysics. 
-  I've explored systems such as Bazi, Ziwei Doushu, and Xiao Liu Ren, and enjoy studying
+  I've explored systems such as Bazi, Ziwei Doushu, and Qimen Dunjia , and enjoy studying
   how these classical frameworks interpret patterns, fate, and decision-making. 
   Explore my life Bazi score K-line chart <a href="https://lifekline-ruby.vercel.app/" target="_blank" rel="noopener noreferrer">here</a>.
   </p>
@@ -77,3 +77,4 @@ experience:
 
 awards:
 - name: RPg Research Performance Award ($20,000 HKD)
+- name: ACM SIGHPC Student Travel Grant Award ($1,900 USD)

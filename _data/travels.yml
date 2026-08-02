@@ -1,5 +1,16 @@
 # 旅游相册：每个相册一行，可放文字记录，图片可左右切换
 albums:
+
+  - title: "Tokyo"
+    date: "2026.10"
+    lat: 35.6895
+    lng: 139.6917
+    description: ""
+    images: []
+      # - src: /assets/images/travels/aboard/Tokyo/1.jpg
+      # - src: /assets/images/travels/aboard/Tokyo/2.jpg
+      # - src: /assets/images/travels/aboard/Tokyo/3.jpg
+
   - title: "Kyoto"
     date: "2027.12"
     lat: 35.0116
@@ -10,15 +21,15 @@ albums:
       # - src: /assets/images/travels/aboard/Kyoto/2.jpg
       # - src: /assets/images/travels/aboard/Kyoto/3.jpg
 
-  - title: "Taiwan"
-    date: "2027.3"
-    lat: 25.0375
-    lng: 121.5637
+  - title: "Shanghai"
+    date: "2027.2"
+    lat: 31.2304
+    lng: 121.4737
     description: ""
-    images: 
-      - src: /assets/images/travels/aboard/Taiwan/1.jpg
-      - src: /assets/images/travels/aboard/Taiwan/2.jpg
-      - src: /assets/images/travels/aboard/Taiwan/3.jpg
+    images: []
+      # - src: /assets/images/travels/Shanghai/1.jpg
+      # - src: /assets/images/travels/Shanghai/2.jpg
+      # - src: /assets/images/travels/Shanghai/3.jpg
 
   - title: "Zhangjiajie"
     date: "2027.1"
@@ -29,6 +40,26 @@ albums:
       - src: /assets/images/travels/zhangjiajie/1.jpg
       - src: /assets/images/travels/zhangjiajie/2.jpg
       - src: /assets/images/travels/zhangjiajie/3.jpg
+
+  - title: "Taibei"
+    date: "2026.12"
+    lat: 25.0375
+    lng: 121.5637
+    description: ""
+    images: 
+      - src: /assets/images/travels/aboard/Taiwan/1.jpg
+      - src: /assets/images/travels/aboard/Taiwan/2.jpg
+      - src: /assets/images/travels/aboard/Taiwan/3.jpg
+
+  - title: "New York"
+    date: "2026.11"
+    lat: 40.7128
+    lng: -74.0060
+    description: ""
+    images: 
+      - src: /assets/images/travels/aboard/newyork/1.jpg
+      - src: /assets/images/travels/aboard/newyork/2.jpg
+      - src: /assets/images/travels/aboard/newyork/3.jpg
 
   - title: "Chigago"
     date: "2026.11"
