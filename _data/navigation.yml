@@ -11,5 +11,7 @@ pages:
   url: /travels
 - name: Cooking
   url: /cooking
+- name: Bazi
+  url: /Bazi/
 # - name: Suanming
 #   url: /suanming

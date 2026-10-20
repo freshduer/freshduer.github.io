@@ -1,0 +1,138 @@
+---
+layout: default
+title: 盲派八字
+navbar_title: Bazi
+permalink: /Bazi/
+---
+
+<style>
+  #bazi-page { padding-bottom: 3rem; }
+  #bazi-page .bz-lead { color: var(--muted-text-color); max-width: 38rem; }
+  #bazi-page .bz-block { margin: 0 0 1.6rem; }
+  #bazi-page .bz-block h2 {
+    font-size: 1.25rem;
+    font-weight: 800;
+    margin: 0 0 0.7rem;
+  }
+  #bazi-page .bz-card {
+    background: var(--surface-bg);
+    border: 1px solid var(--border-color);
+    border-radius: 0.75rem;
+    padding: 1rem 1.15rem;
+    box-shadow: 0 0.125rem 0.5rem rgba(0, 0, 0, 0.05);
+  }
+  #bazi-page .bz-card ol,
+  #bazi-page .bz-card ul {
+    margin: 0;
+    padding-left: 1.15rem;
+  }
+  #bazi-page .bz-card li {
+    color: var(--muted-text-color);
+    font-size: 0.95rem;
+    line-height: 1.65;
+    margin-bottom: 0.45rem;
+  }
+  #bazi-page .bz-card li:last-child { margin-bottom: 0; }
+  #bazi-page .bz-pillars {
+    font-size: 1.15rem;
+    font-weight: 800;
+    letter-spacing: 0.12em;
+    margin: 0 0 0.4rem;
+  }
+  #bazi-page .bz-chart-note {
+    color: var(--muted-text-color);
+    font-size: 0.9rem;
+    margin: 0 0 0.9rem;
+  }
+  #bazi-page .bz-ex + .bz-ex {
+    margin-top: 0.85rem;
+    padding-top: 0.85rem;
+    border-top: 1px solid var(--border-color);
+  }
+  #bazi-page .bz-ex h3 {
+    font-size: 0.95rem;
+    font-weight: 700;
+    margin: 0 0 0.3rem;
+  }
+  #bazi-page .bz-ex p {
+    margin: 0;
+    color: var(--muted-text-color);
+    font-size: 0.95rem;
+    line-height: 1.65;
+  }
+  #bazi-page .bz-ganwu {
+    border-left: 4px solid #87ceeb;
+  }
+  #bazi-page .bz-ganwu p {
+    margin: 0;
+    color: var(--text-color);
+    font-size: 1.02rem;
+    line-height: 1.75;
+  }
+  #bazi-page .bz-ganwu p + p { margin-top: 0.4rem; }
+</style>
+
+<div id="bazi-page">
+  <div class="row justify-content-center">
+    <div class="col-12 col-lg-9 col-xl-8">
+      <h1 class="pt-4">{{ site.data.bazi.page_title }}</h1>
+      <p class="lead bz-lead">{{ site.data.bazi.page_lead }}</p>
+
+      <section class="bz-block">
+        <h2>1. {{ site.data.bazi.xungen.title }}</h2>
+        <article class="bz-card">
+          <ol>
+            {% for item in site.data.bazi.xungen.points %}
+              <li>{{ item }}</li>
+            {% endfor %}
+          </ol>
+        </article>
+      </section>
+
+      <section class="bz-block">
+        <h2>2. {{ site.data.bazi.jiali.title }}</h2>
+        <article class="bz-card">
+          <ol>
+            {% for item in site.data.bazi.jiali.points %}
+              <li>{{ item }}</li>
+            {% endfor %}
+          </ol>
+        </article>
+      </section>
+
+      <section class="bz-block">
+        <h2>3. {{ site.data.bazi.zuogong.title }}</h2>
+        <article class="bz-card">
+          <ol>
+            {% for item in site.data.bazi.zuogong.points %}
+              <li>{{ item }}</li>
+            {% endfor %}
+          </ol>
+        </article>
+      </section>
+
+      <section class="bz-block">
+        <h2>4. {{ site.data.bazi.example.title }}</h2>
+        <article class="bz-card">
+          <p class="bz-pillars">{{ site.data.bazi.example.pillars }}</p>
+          <p class="bz-chart-note">{{ site.data.bazi.example.chart_note }}</p>
+          {% for step in site.data.bazi.example.steps %}
+            <div class="bz-ex">
+              <h3>{{ step.heading }}</h3>
+              <p>{{ step.text }}</p>
+            </div>
+          {% endfor %}
+        </article>
+      </section>
+
+      <section class="bz-block">
+        <h2>5. {{ site.data.bazi.ganwu.title }}</h2>
+        <article class="bz-card bz-ganwu">
+          {% for line in site.data.bazi.ganwu.lines %}
+            <p>{{ line }}</p>
+          {% endfor %}
+        </article>
+      </section>
+    </div>
+  </div>
+</div>
