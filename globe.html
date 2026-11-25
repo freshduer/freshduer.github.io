@@ -2,12 +2,14 @@
 layout: default
 title: Visitor Globe
 navbar_title: Visitor Globe
+mapmyvisitors_embed: true
 ---
 
+{% assign mmv_key = site.mapmyvisitors_key | default: "urZaTpKgk8ESz2YD-FyZkniO2IYgT4asm3CFx1-FNSE" %}
 <div class="container-lg py-4">
   <h1 class="h4 mb-3">Visitor Stats</h1>
-  <p class="text-muted mb-3">Embedded widget from MapMyVisitors.</p>
+  <p class="text-muted mb-3">Site-wide visits recorded by MapMyVisitors. Opening any page on this site counts; this page only shows the map.</p>
   <div id="visitor-map" class="bg-white rounded-sm shadow-sm p-3" style="min-height:200px;">
-    <script type="text/javascript" id="mapmyvisitors" src="//mapmyvisitors.com/map.js?d=urZaTpKgk8ESz2YD-FyZkniO2IYgT4asm3CFx1-FNSE&cl=ffffff&w=a"></script>
+    <script type="text/javascript" id="mapmyvisitors" src="//mapmyvisitors.com/map.js?d={{ mmv_key }}&cl=ffffff&w=a"></script>
   </div>
 </div>

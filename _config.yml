@@ -15,6 +15,10 @@
 # in the templates via {{ site.myvariable }}.
 baseurl: "" # the subpath of your site, e.g. /blog
 
+# MapMyVisitors widget key. The visible map lives on globe.html;
+# a hidden 1x1 pixel in the footer records visits on every other page.
+mapmyvisitors_key: "urZaTpKgk8ESz2YD-FyZkniO2IYgT4asm3CFx1-FNSE"
+
 # Build settings
 markdown: kramdown
 plugins:

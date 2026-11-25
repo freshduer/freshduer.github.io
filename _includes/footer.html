@@ -14,11 +14,21 @@
                     </span> -->
                     <!-- Visitor stats link (no embedded map) -->
                     <span class="ml-3 visitor-map" aria-label="Visitor Stats">
-                        <a href="/globe.html" rel="noopener">View visitor stats</a>
+                        <a href="{{ '/globe.html' | relative_url }}" rel="noopener">View visitor stats</a>
                     </span>
                 </div>
             </div>
         </div>
     </div>
     <script defer src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+    {% unless page.mapmyvisitors_embed %}
+    {% assign mmv_key = site.mapmyvisitors_key | default: "urZaTpKgk8ESz2YD-FyZkniO2IYgT4asm3CFx1-FNSE" %}
+    <img class="mapmyvisitors-pixel"
+         src="https://mapmyvisitors.com/map.png?d={{ mmv_key }}"
+         width="1"
+         height="1"
+         alt=""
+         aria-hidden="true"
+         referrerpolicy="no-referrer-when-downgrade">
+    {% endunless %}
 </footer>

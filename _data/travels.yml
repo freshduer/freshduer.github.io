@@ -37,19 +37,29 @@ albums:
     lng: 110.4923
     description: ""
     images: 
-      - src: /assets/images/travels/zhangjiajie/1.jpg
-      - src: /assets/images/travels/zhangjiajie/2.jpg
-      - src: /assets/images/travels/zhangjiajie/3.jpg
+      # - src: /assets/images/travels/zhangjiajie/1.jpg
+      # - src: /assets/images/travels/zhangjiajie/2.jpg
+      # - src: /assets/images/travels/zhangjiajie/3.jpg
+
+  - title: "Xiamen"
+    date: "2026.12"
+    lat: 24.4680
+    lng: 118.1218
+    description: ""
+    images: 
+      # - src: /assets/images/travels/aboard/Xiamen/1.jpg
+      # - src: /assets/images/travels/aboard/Xiamen/2.jpg
+      # - src: /assets/images/travels/aboard/Xiamen/3.jpg
 
   - title: "Taibei"
-    date: "2026.12"
+    date: "2026.11"
     lat: 25.0375
     lng: 121.5637
     description: ""
     images: 
-      - src: /assets/images/travels/aboard/Taiwan/1.jpg
-      - src: /assets/images/travels/aboard/Taiwan/2.jpg
-      - src: /assets/images/travels/aboard/Taiwan/3.jpg
+      - src: /assets/images/travels/aboard/Taiwan/TaiBei/1.jpg
+      - src: /assets/images/travels/aboard/Taiwan/TaiBei/2.jpg
+      - src: /assets/images/travels/aboard/Taiwan/TaiBei/3.jpg
 
   - title: "New York"
     date: "2026.11"
@@ -70,6 +80,7 @@ albums:
       - src: /assets/images/travels/aboard/Chigago/1.jpg
       - src: /assets/images/travels/aboard/Chigago/2.jpg
       - src: /assets/images/travels/aboard/Chigago/3.jpg
+      - src: /assets/images/travels/aboard/Chigago/4.jpg
 
   - title: "DaTong"
     date: "2026.7"
